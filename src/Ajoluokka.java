@@ -2,7 +2,6 @@ import lejos.nxt.Button;
 import lejos.nxt.Motor;
 import lejos.robotics.navigation.DifferentialPilot;
 
-
 public class Ajoluokka {
 
 	public static void main(String[] args) {

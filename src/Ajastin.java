@@ -1,10 +1,11 @@
 import lejos.nxt.Button;
+
 public class Ajastin{
 
-	 long aloitus;
-	 long lopetus;
-	 long erotus;
-	 double kulunutaika;
+	private long aloitus;
+	private long lopetus;
+	private long erotus;
+	private double kulunutaika;
 	
 	public void aloitusaika() {
 		aloitus = System.currentTimeMillis();

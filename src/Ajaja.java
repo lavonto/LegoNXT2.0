@@ -13,8 +13,19 @@ public class Ajaja implements Runnable {
 
 		while(pilotti.isMoving())Thread.yield(); {
 
-			pilotti.steer(-50, 180, true);
 		}
 
+	}
+	
+	public void kaarraOikealle() {
+		pilotti.steer(-50);
+	}
+	
+	public void kaarraVasemmalle() {
+		pilotti.steer(50);
+	}
+	
+	public void pysaytys() {
+		pilotti.stop();
 	}
 }

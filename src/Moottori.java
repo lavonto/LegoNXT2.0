@@ -1,4 +1,3 @@
-import lejos.nxt.Button;
 import lejos.robotics.navigation.DifferentialPilot;
 
 public class Moottori implements Runnable {
@@ -16,11 +15,12 @@ public class Moottori implements Runnable {
 		ajastin.aloitusaika();
 
 		pilotti.setTravelSpeed(10);
-		pilotti.travel(50);
-		pilotti.stop();
+		pilotti.forward();
 		
 		ajastin.lopetusaika();
 		ajastin.kulunutaika();
+		
+		//pilotti.stop();
 		
 	}
 
