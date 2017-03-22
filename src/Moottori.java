@@ -1,18 +1,27 @@
-import lejos.nxt.Motor;
-import lejos.robotics.navigation.DifferentialPilot;
 import lejos.nxt.Button;
+import lejos.robotics.navigation.DifferentialPilot;
 
 public class Moottori implements Runnable {
 
-	public void run() {
-		// Alustetaan pilotti olio joka saa parametreina renkaan halkaisijan, leveyden ja moottorit)
-		DifferentialPilot pilotti = new DifferentialPilot(2.2f, 1.0f, Motor.A, Motor.C);
-		Button.waitForAnyPress();
-		pilotti.setTravelSpeed(10);
-		pilotti.travel(20);
-		pilotti.travel(3);
-		pilotti.stop();
+	private DifferentialPilot pilotti;
+	private Ajastin ajastin;
 
+	Moottori(DifferentialPilot pilotti, Ajastin ajastin) {
+		this.pilotti = pilotti;
+		this.ajastin = ajastin;
+	}
+	
+	public void run() {
+		
+		ajastin.aloitusaika();
+
+		pilotti.setTravelSpeed(10);
+		pilotti.travel(50);
+		pilotti.stop();
+		
+		ajastin.lopetusaika();
+		ajastin.kulunutaika();
+		
 	}
 
 }
