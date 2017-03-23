@@ -12,7 +12,7 @@ public class Ajoluokka {
 		final Ajastin ajastin;
 		final UltrasonicSensor uSensori;
 		
-		pilotti = new DifferentialPilot(2.2f, 1.0f, Motor.C, Motor.A);
+		pilotti = new DifferentialPilot(2.2f, 7.5f, Motor.C, Motor.A);
 		uSensori = new UltrasonicSensor(SensorPort.S1);
 		ajastin = new Ajastin();
 
@@ -25,9 +25,11 @@ public class Ajoluokka {
 		
 		Thread  moottori = new Thread(m);
 		Thread ajaja = new Thread(a);
-
+		Thread aanisensori = new Thread(s);
+		
 		moottori.start();
 		ajaja.start();
+		aanisensori.start();
 
 			
 		
