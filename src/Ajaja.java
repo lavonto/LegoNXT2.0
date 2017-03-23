@@ -1,12 +1,15 @@
 import lejos.robotics.navigation.DifferentialPilot;
+import lejos.nxt.UltrasonicSensor;
 
 public class Ajaja implements Runnable {
 
 	// Ajaja ohjaa robottia.
 	private DifferentialPilot pilotti;
+	private UltrasonicSensor uSensori;
 	
-	Ajaja(DifferentialPilot pilotti) {
+	Ajaja(DifferentialPilot pilotti, UltrasonicSensor uSensori) {
 		this.pilotti = pilotti;
+		this.uSensori = uSensori;
 	}
 	
 	public void run() {
