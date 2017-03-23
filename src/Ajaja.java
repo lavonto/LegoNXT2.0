@@ -1,26 +1,11 @@
 import lejos.robotics.navigation.DifferentialPilot;
-import lejos.nxt.Button;
-import lejos.nxt.UltrasonicSensor;
 
-public class Ajaja implements Runnable {
+public class Ajaja {
 
-	
 	private DifferentialPilot pilotti;
 
 	Ajaja(DifferentialPilot pilotti) {
 		this.pilotti = pilotti;
-	}
-
-	public void run() {
-
-		/*
-		 * while(pilotti.isMoving())Thread.yield(); { 
-		 * if (as.palautaEtaisyys() <
-		 * 20){ vaisto(); }
-		 * 
-		 * }
-		 */
-
 	}
 
 	public void kaarraOikealle() {
