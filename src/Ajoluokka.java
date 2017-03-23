@@ -18,8 +18,9 @@ public class Ajoluokka {
 
 		// Ohjelma käynnistyy kun jotain nappia painetaan.
 		Button.waitForAnyPress();
+		ajastin.aloitusaika();
 		
-		Runnable m = new Moottori(pilotti, ajastin);
+		Runnable m = new Moottori(pilotti/*, ajastin*/);
 		Ajaja a = new Ajaja(pilotti, uSensori);
 		AaniSensori s = new AaniSensori(uSensori);
 		
@@ -30,6 +31,10 @@ public class Ajoluokka {
 		moottori.start();
 		ajaja.start();
 		aanisensori.start();
+
+		
+		ajastin.lopetusaika();
+		ajastin.kulunutaika();
 
 			
 		

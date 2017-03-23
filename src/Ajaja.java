@@ -14,6 +14,7 @@ public class Ajaja implements Runnable {
 	}
 	
 	public void run() {
+
 		while(pilotti.isMoving())Thread.yield(); {
 			if (as.palautaEtaisyys() < 20){
 				vaisto();
