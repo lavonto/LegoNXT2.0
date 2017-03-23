@@ -19,8 +19,8 @@ public class Moottori implements Runnable {
 			pilotti.forward();
 		}
 
-		ajastin.lopetusaika();
-		ajastin.kulunutaika();
+		//ajastin.lopetusaika();
+		//ajastin.kulunutaika();
 
 		// pilotti.stop();
 
