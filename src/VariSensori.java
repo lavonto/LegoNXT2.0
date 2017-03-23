@@ -47,6 +47,9 @@ public class VariSensori implements Runnable {
 	}
 
 	public void run() {
+		
+		asetaVarit();
+		
 		while (!Button.ESCAPE.isDown()) {
 
 			// T‰‰ ei oo siis toimiva systeemi, mietint‰ viel‰ kesken!

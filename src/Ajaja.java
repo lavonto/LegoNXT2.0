@@ -9,11 +9,11 @@ public class Ajaja {
 	}
 
 	public void kaarraOikealle() {
-		pilotti.steer(-50);
+		pilotti.steer(-100);
 	}
 
 	public void kaarraVasemmalle() {
-		pilotti.steer(50);
+		pilotti.steer(100);
 	}
 
 	public void pysahdy() {
@@ -21,7 +21,7 @@ public class Ajaja {
 	}
 
 	public void liiku() {
-		pilotti.forward();
+		pilotti.steer(0);
 	}
 
 	public void vaisto() {

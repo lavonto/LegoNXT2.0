@@ -13,16 +13,16 @@ public class AaniSensori implements Runnable {
 		this.ajaja = ajaja;
 	}
 
-	// käynnistyy säikeen alussa
+	// Käynnistyy säikeen alussa
 	public void run() {
 		while (!Button.ESCAPE.isDown()) {
 			palautaEtaisyys();
 		}
 	}
 
-	// tulostaa etäisyyden lähimpään esteeseen robotin näytölle, sekä palauttaa
+	// Tulostaa etäisyyden lähimpään esteeseen robotin näytölle, sekä palauttaa
 	// saman arvon
-	public synchronized int palautaEtaisyys() {
+	public int palautaEtaisyys() {
 
 		LCD.clear();
 		System.out.println(uSensori.getDistance());
