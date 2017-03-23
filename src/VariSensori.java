@@ -2,13 +2,11 @@ import lejos.nxt.Button;
 import lejos.nxt.ColorSensor;
 import lejos.nxt.SensorPort;
 
-public class VariSensori {
+public class VariSensori implements Runnable {
 
 	private int mustaVari;
 	private int valkoinenVari;
 	private int viivaVari;
-	private int viivaMax = viivaVari + 5;
-	private int viivaMin = viivaVari - 5;
 	private ColorSensor cSensori;
 	private Ajaja ajaja;
 
@@ -50,20 +48,16 @@ public class VariSensori {
 
 	public void run() {
 		while (!Button.ESCAPE.isDown()) {
-			// Jos pystytte jotenkin testaamaan tätä niin ois kiva
-			// Ideana mulla oli että se robotin liikkumisalue ois viivan värin arvo +- 5, eli se ei ihan heti pienien 
-			// väri muutosten myötä lähtis kaartamaan mihinkään
-			if (cSensori.getLightValue() < viivaMin) {
+
+			// Tää ei oo siis toimiva systeemi, mietintä vielä kesken!
+			if (cSensori.getLightValue() < viivaVari) {
 				ajaja.kaarraOikealle();
-			} else if (cSensori.getLightValue() > viivaMax) {
+			} else if (cSensori.getLightValue() > viivaVari) {
 				ajaja.kaarraVasemmalle();
 			} else {
 				ajaja.liiku();
 			}
-			
-			// Noita mustan ja valkosen arvoja voisi varmaan hyödyntää jyrkissä käännöksissä, 
-			// siis jos robotti hukkaa sen viivan reunan eli on selkeesti mustalla nii se kääntyy jyrkemmin 
-			// oikealle kuin mitä se tekee tossa ylempänä? 
+
 		}
 	}
 }

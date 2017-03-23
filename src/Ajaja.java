@@ -1,46 +1,45 @@
 import lejos.robotics.navigation.DifferentialPilot;
+import lejos.nxt.Button;
 import lejos.nxt.UltrasonicSensor;
 
 public class Ajaja implements Runnable {
 
-	// Ajaja ohjaa robottia.
+	
 	private DifferentialPilot pilotti;
-	private UltrasonicSensor uSensori;
-	AaniSensori as = new AaniSensori(uSensori);
-	
-	Ajaja(DifferentialPilot pilotti, UltrasonicSensor uSensori) {
+
+	Ajaja(DifferentialPilot pilotti) {
 		this.pilotti = pilotti;
-		this.uSensori = uSensori;
 	}
-	
+
 	public void run() {
 
-		/*while(pilotti.isMoving())Thread.yield(); {
-			if (as.palautaEtaisyys() < 20){
-				vaisto();
-			}
-			
-		}*/
+		/*
+		 * while(pilotti.isMoving())Thread.yield(); { 
+		 * if (as.palautaEtaisyys() <
+		 * 20){ vaisto(); }
+		 * 
+		 * }
+		 */
 
 	}
-	
+
 	public void kaarraOikealle() {
 		pilotti.steer(-50);
 	}
-	
+
 	public void kaarraVasemmalle() {
 		pilotti.steer(50);
 	}
-	
+
 	public void pysahdy() {
 		pilotti.stop();
 	}
-	
+
 	public void liiku() {
 		pilotti.forward();
 	}
-	
-	public synchronized void vaisto() {
+
+	public void vaisto() {
 		pysahdy();
 		kaanny(45);
 		pilotti.travel(10);
@@ -49,8 +48,8 @@ public class Ajaja implements Runnable {
 		kaanny(45);
 	}
 
-	public synchronized void kaanny(int kulma) {
+	public void kaanny(int kulma) {
 		pilotti.rotate(kulma);
 	}
-	
+
 }
