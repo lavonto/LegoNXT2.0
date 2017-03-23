@@ -2,6 +2,7 @@ import lejos.robotics.navigation.DifferentialPilot;
 
 public class Ajaja implements Runnable {
 
+	// Ajaja ohjaa robottia.
 	private DifferentialPilot pilotti;
 	
 	Ajaja(DifferentialPilot pilotti) {
