@@ -8,13 +8,15 @@ public class VariSensori {
 	private int mustaVari;
 	private int valkoinenVari;
 	private int viivaVari;
+	private ColorSensor cSensori;
 
 	// Luodaan ColorSensor olio
-	ColorSensor sensori = new ColorSensor(SensorPort.S4);
+	//ColorSensor sensori = new ColorSensor(SensorPort.S4);
 
-	public VariSensori() {
+	public VariSensori(ColorSensor cSensori) {
+		this.cSensori = cSensori;
 		// Laitetaan RGB Sensorin punainen valo p‰‰lle rakentajassa
-		sensori.setFloodlight(true);
+		cSensori.setFloodlight(true);
 	}
 
 	public void asetaVarit() {
@@ -22,19 +24,19 @@ public class VariSensori {
 		// Tallennetaan mustan arvo muuttujaan
 		System.out.println("Lue musta");
 		Button.waitForAnyPress();
-		mustaVari = sensori.getLightValue();
+		mustaVari = cSensori.getLightValue();
 		Button.waitForAnyPress();
 
 		// Tallennetaan valkoisen arvo muuttujaan
 		System.out.println("Lue valkoinen");
 		Button.waitForAnyPress();
-		valkoinenVari = sensori.getLightValue();
+		valkoinenVari = cSensori.getLightValue();
 		Button.waitForAnyPress();
 
 		// Tallennetaan viivan arvo muuttujaan
 		System.out.println("Lue viiva");
 		Button.waitForAnyPress();
-		viivaVari = sensori.getLightValue();
+		viivaVari = cSensori.getLightValue();
 		Button.waitForAnyPress();
 
 		// Tulostetaan n‰ytˆlle arvot
@@ -47,9 +49,9 @@ public class VariSensori {
 		while (!Button.ESCAPE.isDown()) {
  
 			// T‰‰ ei oo siis toimiva systeemi, mietint‰ viel‰ kesken!
-			 if (sensori.getLightValue() < mustaVari){ 
+			 if (cSensori.getLightValue() < mustaVari){ 
 				 // K‰‰nny oikealle }
-			 }else if (sensori.getLightValue() > valkoinenVari){ 
+			 }else if (cSensori.getLightValue() > valkoinenVari){ 
 				 // K‰‰nny vasemmalle
 			 }else { 
 				 // Mene suoraan t‰ysi‰ jihuu }

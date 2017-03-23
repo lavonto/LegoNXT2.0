@@ -1,4 +1,5 @@
 import lejos.nxt.Button;
+import lejos.nxt.ColorSensor;
 import lejos.nxt.Motor;
 import lejos.nxt.SensorPort;
 import lejos.nxt.UltrasonicSensor;
@@ -11,10 +12,12 @@ public class Ajoluokka {
 		final DifferentialPilot pilotti;
 		final Ajastin ajastin;
 		final UltrasonicSensor uSensori;
+		final ColorSensor cSensori;
 		
 		pilotti = new DifferentialPilot(2.2f, 1.0f, Motor.C, Motor.A);
 		uSensori = new UltrasonicSensor(SensorPort.S1);
 		ajastin = new Ajastin();
+		cSensori = new ColorSensor(SensorPort.S4);
 
 		// Ohjelma käynnistyy kun jotain nappia painetaan.
 		Button.waitForAnyPress();
