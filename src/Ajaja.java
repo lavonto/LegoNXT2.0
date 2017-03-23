@@ -14,7 +14,6 @@ public class Ajaja implements Runnable {
 	
 	public void run() {
 
-
 		while(pilotti.isMoving())Thread.yield(); {
 
 		}
