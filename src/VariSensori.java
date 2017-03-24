@@ -1,5 +1,6 @@
 import lejos.nxt.Button;
 import lejos.nxt.ColorSensor;
+import lejos.nxt.LCD;
 import lejos.nxt.SensorPort;
 
 public class VariSensori implements Runnable {
@@ -23,13 +24,11 @@ public class VariSensori implements Runnable {
 		System.out.println("Lue musta");
 		Button.waitForAnyPress();
 		mustaVari = cSensori.getLightValue();
-		Button.waitForAnyPress();
 
 		// Tallennetaan valkoisen arvo muuttujaan
 		System.out.println("Lue valkoinen");
 		Button.waitForAnyPress();
 		valkoinenVari = cSensori.getLightValue();
-		Button.waitForAnyPress();
 
 		// Tallennetaan viivan arvo muuttujaan
 		System.out.println("Lue viiva");
@@ -46,20 +45,20 @@ public class VariSensori implements Runnable {
 		asetaVarit();
 
 		while (!Button.ESCAPE.isDown()) {
-			ajaja.liiku();
+			
 			
 			// T‰‰ ei oo siis toimiva systeemi, mietint‰ viel‰ kesken!
-			if (cSensori.getLightValue() < viivaVari) {
+			if (palautaVari() < viivaMin) {
 				ajaja.kaarraOikealle();
 				try {
-					Thread.sleep(50);
+ 					Thread.sleep(50);
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				ajaja.liiku();
+				
 			} 
-			if (cSensori.getLightValue() > viivaVari) {
+			else if (palautaVari() > viivaMax) {
 				ajaja.kaarraVasemmalle();
 				try {
 					Thread.sleep(50);
@@ -67,8 +66,22 @@ public class VariSensori implements Runnable {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
+				
+			} else {
 				ajaja.liiku();
-			} 
+			}
 		}
+	}
+	
+	public int palautaVari() {
+		try {
+			Thread.sleep(200);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		LCD.clear();
+		System.out.println(cSensori.getLightValue());
+		return cSensori.getLightValue();
 	}
 }

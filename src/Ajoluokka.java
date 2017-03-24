@@ -34,5 +34,7 @@ public class Ajoluokka {
 		//ajaja.liiku();
 		//aanisensori.start();
 		varisensori.start();
+		
+		
 	}
 }
