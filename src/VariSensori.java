@@ -7,6 +7,8 @@ public class VariSensori implements Runnable {
 	private int mustaVari;
 	private int valkoinenVari;
 	private int viivaVari;
+	private int viivaMin = viivaVari - 5;
+	private int viivaMax = viivaVari + 5;
 	private ColorSensor cSensori;
 	private Ajaja ajaja;
 
@@ -53,9 +55,9 @@ public class VariSensori implements Runnable {
 		while (!Button.ESCAPE.isDown()) {
 
 			// T‰‰ ei oo siis toimiva systeemi, mietint‰ viel‰ kesken!
-			if (cSensori.getLightValue() < viivaVari) {
+			if (cSensori.getLightValue() < viivaMin) {
 				ajaja.kaarraOikealle();
-			} else if (cSensori.getLightValue() > viivaVari) {
+			} else if (cSensori.getLightValue() > viivaMax) {
 				ajaja.kaarraVasemmalle();
 			} else {
 				ajaja.liiku();
