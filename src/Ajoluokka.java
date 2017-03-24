@@ -18,7 +18,7 @@ public class Ajoluokka {
 
 		pilotti = new DifferentialPilot(2.2f, 7.5f, Motor.C, Motor.A); // KOKEILE ERI VAIHTOEHTOJA!!
 		uSensori = new UltrasonicSensor(SensorPort.S1);
-		cSensori = new ColorSensor(SensorPort.S4);
+		cSensori = new ColorSensor(SensorPort.S2);
 		ajaja = new Ajaja(pilotti);
 		ajastin = new Ajastin();
 
@@ -31,8 +31,8 @@ public class Ajoluokka {
 		Button.waitForAnyPress();
 		
 		// ajastin.aloitusaika();
-		ajaja.liiku();
+		//ajaja.liiku();
 		//aanisensori.start();
-		//varisensori.start();
+		varisensori.start();
 	}
 }

@@ -12,14 +12,9 @@ public class VariSensori implements Runnable {
 	private ColorSensor cSensori;
 	private Ajaja ajaja;
 
-	// Luodaan ColorSensor olio
-	// ColorSensor sensori = new ColorSensor(SensorPort.S4);
-
 	public VariSensori(ColorSensor cSensori, Ajaja ajaja) {
 		this.cSensori = cSensori;
 		this.ajaja = ajaja;
-		// Laitetaan RGB Sensorin punainen valo p‰‰lle rakentajassa
-		cSensori.setFloodlight(true);
 	}
 
 	public void asetaVarit() {
@@ -41,28 +36,39 @@ public class VariSensori implements Runnable {
 		Button.waitForAnyPress();
 		viivaVari = cSensori.getLightValue();
 		Button.waitForAnyPress();
-
-		// Tulostetaan n‰ytˆlle arvot
-		System.out.println("Musta on " + mustaVari + ", valkoinen on "
-				+ valkoinenVari + " ja viiva on " + viivaVari);
-		Button.waitForAnyPress();
 	}
 
 	public void run() {
+		// Laitetaan RGB Sensorin punainen valo p‰‰lle
+		cSensori.setFloodlight(true);
 		
+		// Tallennetaan v‰rit muuttujaan
 		asetaVarit();
-		
+
 		while (!Button.ESCAPE.isDown()) {
-
+			ajaja.liiku();
+			
 			// T‰‰ ei oo siis toimiva systeemi, mietint‰ viel‰ kesken!
-			if (cSensori.getLightValue() < viivaMin) {
+			if (cSensori.getLightValue() < viivaVari) {
 				ajaja.kaarraOikealle();
-			} else if (cSensori.getLightValue() > viivaMax) {
-				ajaja.kaarraVasemmalle();
-			} else {
+				try {
+					Thread.sleep(50);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				ajaja.liiku();
-			}
-
+			} 
+			if (cSensori.getLightValue() > viivaVari) {
+				ajaja.kaarraVasemmalle();
+				try {
+					Thread.sleep(50);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				ajaja.liiku();
+			} 
 		}
 	}
 }
