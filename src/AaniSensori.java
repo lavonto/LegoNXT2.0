@@ -18,7 +18,7 @@ public class AaniSensori implements Runnable {
 			palautaEtaisyys();
 		
 			if (palautaEtaisyys() < 20) {
-				ajaja.vaisto();
+				//ajaja.vaisto();
 			} else {
 				ajaja.liiku();
 			}

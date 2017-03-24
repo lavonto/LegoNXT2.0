@@ -16,10 +16,9 @@ public class Ajoluokka {
 		final ColorSensor cSensori;
 		final Ajaja ajaja;
 
-		pilotti = new DifferentialPilot(2.2f, 7.5f, Motor.C, Motor.A); // KOKEILE ERI VAIHTOEHTOJA!!
 		uSensori = new UltrasonicSensor(SensorPort.S1);
 		cSensori = new ColorSensor(SensorPort.S2);
-		ajaja = new Ajaja(pilotti);
+		ajaja = new Ajaja();
 		ajastin = new Ajastin();
 
 		Runnable us = new AaniSensori(uSensori, ajaja);
@@ -29,9 +28,8 @@ public class Ajoluokka {
 
 		// Ohjelma käynnistyy kun jotain nappia painetaan.
 		Button.waitForAnyPress();
-		
+
 		// ajastin.aloitusaika();
-		//ajaja.liiku();
 		//aanisensori.start();
 		varisensori.start();
 		
