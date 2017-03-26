@@ -67,7 +67,8 @@ public class VariSensori implements Runnable {
 					e.printStackTrace();
 				}
 				
-			} else {
+			}
+			if (palautaVari() > viivaMin && palautaVari() < viivaMax){
 				ajaja.liiku();
 			}
 		}
