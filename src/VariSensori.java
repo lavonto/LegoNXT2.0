@@ -47,7 +47,6 @@ public class VariSensori implements Runnable {
 
 		while (!Button.ESCAPE.isDown()) {
 			
-			// T‰‰ ei oo siis toimiva systeemi, mietint‰ viel‰ kesken!
 			if (palautaVari() < viivaMin) {
 				ajaja.kaarraOikealle();
 				try {
