@@ -37,8 +37,8 @@ public class VariSensori implements Runnable {
 		viivaVari = cSensori.getLightValue();
 		Button.waitForAnyPress();
 		
-		viivaMin = viivaVari - 5;
-		viivaMax = viivaVari + 5;
+		viivaMin = viivaVari - 2;
+		viivaMax = viivaVari + 2;
 		
 	}
 
@@ -53,23 +53,10 @@ public class VariSensori implements Runnable {
 			
 			if (palautaVari() < viivaMin) {
 				ajaja.kaarraOikealle();
-				try {
- 					Thread.sleep(400);
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
 				
 			} 
 			if (palautaVari() > viivaMax) {
 				ajaja.kaarraVasemmalle();
-				try {
-					Thread.sleep(400);
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				
 			}
 			if (palautaVari() > viivaMin && palautaVari() < viivaMax){
 				ajaja.liiku();
@@ -79,7 +66,7 @@ public class VariSensori implements Runnable {
 	
 	public int palautaVari() {
 		try {
-			Thread.sleep(400);
+			Thread.sleep(100);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
