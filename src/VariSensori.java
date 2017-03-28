@@ -20,7 +20,7 @@ public class VariSensori implements Runnable {
 	}
 
 	public void asetaVarit() {
-
+/*
 		// Tallennetaan mustan arvo muuttujaan
 		System.out.println("Lue musta");
 		Button.waitForAnyPress();
@@ -30,7 +30,7 @@ public class VariSensori implements Runnable {
 		System.out.println("Lue valkoinen");
 		Button.waitForAnyPress();
 		valkoinenVari = cSensori.getLightValue();
-
+*/
 		// Tallennetaan viivan arvo muuttujaan
 		System.out.println("Lue viiva");
 		Button.waitForAnyPress();
@@ -51,19 +51,19 @@ public class VariSensori implements Runnable {
 
 		while (!Button.ESCAPE.isDown()) {
 			
-			if (palautaVari() < viivaMin) {
+			if (cSensori.getLightValue() < viivaMin) {
 				ajaja.kaarraOikealle();
-				
+	
 			} 
-			if (palautaVari() > viivaMax) {
+			if (cSensori.getLightValue() > viivaMax) {
 				ajaja.kaarraVasemmalle();
 			}
-			if (palautaVari() > viivaMin && palautaVari() < viivaMax){
+			if (cSensori.getLightValue() > viivaMin && cSensori.getLightValue() < viivaMax){
 				ajaja.liiku();
 			}
 		}
 	}
-	
+	/*
 	public int palautaVari() {
 		try {
 			Thread.sleep(100);
@@ -74,5 +74,5 @@ public class VariSensori implements Runnable {
 		LCD.clear();
 		System.out.println(cSensori.getLightValue());
 		return cSensori.getLightValue();
-	}
+	}*/
 }
