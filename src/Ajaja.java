@@ -34,6 +34,7 @@ public class Ajaja {
 	}
 
 	public void liiku() {
+
 		Motor.A.setSpeed(180);
 		Motor.B.setSpeed(180);
 		Motor.A.forward();

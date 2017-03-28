@@ -21,9 +21,7 @@ public class AaniSensori implements Runnable {
 				//ajaja.vaisto();
 			} else {
 				ajaja.liiku();
-			}
-			
-			
+			}		
 		}
 	}
 
