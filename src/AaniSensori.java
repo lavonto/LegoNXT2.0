@@ -15,19 +15,17 @@ public class AaniSensori implements Runnable {
 	// Käynnistyy säikeen alussa
 	public void run() {
 		while (!Button.ESCAPE.isDown()) {
-			palautaEtaisyys();
 		
-			if (palautaEtaisyys() < 20) {
-				//ajaja.vaisto();
-			} else {
-				ajaja.liiku();
-			}		
+			if (uSensori.getDistance() < 20) {
+				ajaja.pysahdy();
+				ajaja.liikkeessa = false;
+			}	
 		}
 	}
 
 	// Tulostaa etäisyyden lähimpään esteeseen robotin näytölle, sekä palauttaa
 	// saman arvon
-	public int palautaEtaisyys() {
+	/*public int palautaEtaisyys() {
 		try {
 			Thread.sleep(200);
 		} catch (InterruptedException e) {
@@ -36,7 +34,7 @@ public class AaniSensori implements Runnable {
 		}
 		LCD.clear();
 		System.out.println(uSensori.getDistance());
-		return uSensori.getDistance();
+		return uSensori.getDistance();*/
 	}
 
-}
+

@@ -3,7 +3,6 @@ import lejos.nxt.ColorSensor;
 import lejos.nxt.LCD;
 import lejos.nxt.SensorPort;
 
-
 public class VariSensori implements Runnable {
 
 	private int viivaVari;
@@ -27,7 +26,6 @@ public class VariSensori implements Runnable {
 		
 		viivaMin = viivaVari - 2;
 		viivaMax = viivaVari + 2;
-		
 	}
 
 	public void run() {
@@ -36,8 +34,9 @@ public class VariSensori implements Runnable {
 		
 		// Tallennetaan värit muuttujaan
 		asetaVarit();
+		ajaja.liikkeessa = true;
 
-		while (!Button.ESCAPE.isDown()) {
+		while (ajaja.liikkeessa =true) {
 			
 			if (cSensori.getLightValue() < viivaMin) {
 				ajaja.kaarraOikealle();	
@@ -47,6 +46,7 @@ public class VariSensori implements Runnable {
 			}
 			if (cSensori.getLightValue() > viivaMin && cSensori.getLightValue() < viivaMax){
 				ajaja.liiku();
+				
 			}
 		}
 	}

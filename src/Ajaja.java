@@ -1,10 +1,18 @@
 import lejos.nxt.Motor;
+import lejos.robotics.navigation.DifferentialPilot;
 
 public class Ajaja {
+	
+	protected boolean liikkeessa;
+	private DifferentialPilot pilotti;
+	
+	Ajaja(DifferentialPilot pilotti) {
+		this.pilotti = pilotti;
+	}
 
 	public void kaarraOikealle() {
-		Motor.B.setSpeed(90);
-		Motor.A.setSpeed(180);
+		Motor.B.setSpeed(180);
+		Motor.A.setSpeed(360);
 		Motor.A.forward();
 		Motor.B.forward();
 		try {
@@ -16,8 +24,8 @@ public class Ajaja {
 	}
 
 	public void kaarraVasemmalle() {
-		Motor.B.setSpeed(180);
-		Motor.A.setSpeed(90);
+		Motor.B.setSpeed(360);
+		Motor.A.setSpeed(180);
 		Motor.A.forward();
 		Motor.B.forward();
 		try {
@@ -34,13 +42,13 @@ public class Ajaja {
 	}
 
 	public void liiku() {
-		Motor.B.setSpeed(180);
-		Motor.A.setSpeed(180);
+		Motor.B.setSpeed(360);
+		Motor.A.setSpeed(360);
 		Motor.A.forward();
 		Motor.B.forward();
 	}
 
-	/*public void vaisto() {
+	public void vaisto() {
 		pysahdy();
 		kaanny(45);
 		pilotti.travel(10);
@@ -51,6 +59,6 @@ public class Ajaja {
 
 	public void kaanny(int kulma) {
 		pilotti.rotate(kulma);
-	}*/
+	}
 
 }
