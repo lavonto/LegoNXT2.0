@@ -9,8 +9,8 @@ public class VariSensori implements Runnable {
 	private int mustaVari;
 	private int valkoinenVari;
 	private int viivaVari;
-	private int viivaMin = viivaVari - 5;
-	private int viivaMax = viivaVari + 5;
+	private int viivaMin;
+	private int viivaMax;
 	private ColorSensor cSensori;
 	private Ajaja ajaja;
 
@@ -36,6 +36,10 @@ public class VariSensori implements Runnable {
 		Button.waitForAnyPress();
 		viivaVari = cSensori.getLightValue();
 		Button.waitForAnyPress();
+		
+		viivaMin = viivaVari - 5;
+		viivaMax = viivaVari + 5;
+		
 	}
 
 	public void run() {
@@ -50,7 +54,7 @@ public class VariSensori implements Runnable {
 			if (palautaVari() < viivaMin) {
 				ajaja.kaarraOikealle();
 				try {
- 					Thread.sleep(50);
+ 					Thread.sleep(400);
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -60,7 +64,7 @@ public class VariSensori implements Runnable {
 			if (palautaVari() > viivaMax) {
 				ajaja.kaarraVasemmalle();
 				try {
-					Thread.sleep(50);
+					Thread.sleep(400);
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -75,7 +79,7 @@ public class VariSensori implements Runnable {
 	
 	public int palautaVari() {
 		try {
-			Thread.sleep(100);
+			Thread.sleep(400);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
