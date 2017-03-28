@@ -2,7 +2,7 @@ import lejos.nxt.Button;
 import lejos.nxt.ColorSensor;
 import lejos.nxt.LCD;
 import lejos.nxt.SensorPort;
-import lejos.nxt.Motor;
+
 
 public class VariSensori implements Runnable {
 
@@ -51,20 +51,19 @@ public class VariSensori implements Runnable {
 
 		while (!Button.ESCAPE.isDown()) {
 			
-			if (palautaVari() < viivaMin) {
-				ajaja.kaarraOikealle();
-				
+			if (cSensori.getLightValue() < viivaMin) {
+				ajaja.kaarraOikealle();	
 			} 
-			if (palautaVari() > viivaMax) {
+			if (cSensori.getLightValue() > viivaMax) {
 				ajaja.kaarraVasemmalle();
 			}
-			if (palautaVari() > viivaMin && palautaVari() < viivaMax){
+			if (cSensori.getLightValue() > viivaMin && cSensori.getLightValue() < viivaMax){
 				ajaja.liiku();
 			}
 		}
 	}
 	
-	public int palautaVari() {
+	/*public int palautaVari() {
 		try {
 			Thread.sleep(100);
 		} catch (InterruptedException e) {
@@ -74,5 +73,5 @@ public class VariSensori implements Runnable {
 		LCD.clear();
 		System.out.println(cSensori.getLightValue());
 		return cSensori.getLightValue();
-	}
+	}*/
 }

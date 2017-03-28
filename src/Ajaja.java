@@ -3,10 +3,10 @@ import lejos.nxt.Motor;
 public class Ajaja {
 
 	public void kaarraOikealle() {
-		Motor.C.setSpeed(180);
-		Motor.A.setSpeed(360);
+		Motor.B.setSpeed(90);
+		Motor.A.setSpeed(180);
 		Motor.A.forward();
-		Motor.C.forward();
+		Motor.B.forward();
 		try {
 			Thread.sleep(50);
 		} catch (InterruptedException e) {
@@ -16,10 +16,10 @@ public class Ajaja {
 	}
 
 	public void kaarraVasemmalle() {
-		Motor.C.setSpeed(360);
-		Motor.A.setSpeed(180);
+		Motor.B.setSpeed(180);
+		Motor.A.setSpeed(90);
 		Motor.A.forward();
-		Motor.C.forward();
+		Motor.B.forward();
 		try {
 			Thread.sleep(50);
 		} catch (InterruptedException e) {
@@ -30,12 +30,14 @@ public class Ajaja {
 
 	public void pysahdy() {
 		Motor.A.stop(true);
-		Motor.C.stop(true);
+		Motor.B.stop(true);
 	}
 
 	public void liiku() {
+		Motor.B.setSpeed(180);
+		Motor.A.setSpeed(180);
 		Motor.A.forward();
-		Motor.C.forward();
+		Motor.B.forward();
 	}
 
 	/*public void vaisto() {
