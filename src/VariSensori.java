@@ -6,8 +6,6 @@ import lejos.nxt.SensorPort;
 
 public class VariSensori implements Runnable {
 
-	private int mustaVari;
-	private int valkoinenVari;
 	private int viivaVari;
 	private int viivaMin;
 	private int viivaMax;
@@ -20,16 +18,6 @@ public class VariSensori implements Runnable {
 	}
 
 	public void asetaVarit() {
-
-		// Tallennetaan mustan arvo muuttujaan
-		System.out.println("Lue musta");
-		Button.waitForAnyPress();
-		mustaVari = cSensori.getLightValue();
-
-		// Tallennetaan valkoisen arvo muuttujaan
-		System.out.println("Lue valkoinen");
-		Button.waitForAnyPress();
-		valkoinenVari = cSensori.getLightValue();
 
 		// Tallennetaan viivan arvo muuttujaan
 		System.out.println("Lue viiva");
@@ -62,16 +50,4 @@ public class VariSensori implements Runnable {
 			}
 		}
 	}
-	
-	/*public int palautaVari() {
-		try {
-			Thread.sleep(100);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		LCD.clear();
-		System.out.println(cSensori.getLightValue());
-		return cSensori.getLightValue();
-	}*/
 }
