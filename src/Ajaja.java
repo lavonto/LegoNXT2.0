@@ -4,7 +4,11 @@ import lejos.robotics.navigation.DifferentialPilot;
 public class Ajaja {
 	
 	protected int vaihde;
+	protected int puoli;
 	private DifferentialPilot pilotti;
+	
+	
+	private int i;
 	
 	Ajaja(DifferentialPilot pilotti) {
 		this.pilotti = pilotti;
@@ -18,6 +22,13 @@ public class Ajaja {
 		return vaihde;
 	}
 
+	public void setPuoli(int puoli){
+		this.puoli = puoli;
+	}
+	
+	public int getPuoli(){
+		return puoli;
+	}
 	
 	public void kaarraOikealle() {
 		Motor.B.setSpeed(180);
@@ -60,14 +71,17 @@ public class Ajaja {
 	public void vaisto() {
 		pysahdy();
 		kaanny(45);
+		System.out.println(i);
 		pilotti.travel(10);
 		kaanny(-90);
 		pilotti.travel(10);
 		kaanny(45);
+		
 	}
 
-	public void kaanny(int kulma) {
+	public void kaanny(int kulma) {		
 		pilotti.rotate(kulma);
+		i++;
 	}
 
 }

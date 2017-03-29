@@ -54,20 +54,38 @@ public class VariSensori implements Runnable {
 		
 		// Tallennetaan värit muuttujaan
 		asetaVarit();
+		
+		// Asetetaan kumman puolen seuraaja
+		ajaja.setPuoli(2);
+		// Asetetaan vaihteenksi 1, jolloin VariSensorin if-lauseet on käytössä
 		ajaja.setVaihde(1);
-
-		while (ajaja.getVaihde() == 1) {		
-			if (cSensori.getLightValue() < viivaMin) {
+		
+		// Puoli 1 == vasemman puolen seuraaja ja puoli 2 == oikean puolen seuraaja
+		while (ajaja.getVaihde() == 1) {	
+			
+			// Vasemman puolen viivan seuraajan kaartamiset
+			if (cSensori.getLightValue() > viivaMax && ajaja.getPuoli() == 1) {
 				ajaja.kaarraOikealle();
 			} 
-			if (cSensori.getLightValue() > viivaMax) {
+			if ((cSensori.getLightValue() < viivaMin && ajaja.getPuoli() == 1) || (cSensori.getLightValue() > viivaMax && ajaja.getPuoli() == 2)) {
 				ajaja.kaarraVasemmalle();
 			}
+			
+			// Oikean puolen viivan seuraajan kaartamiset
+			if (cSensori.getLightValue() < viivaMin && ajaja.getPuoli() == 2) {
+				ajaja.kaarraOikealle();
+			}
+			if (cSensori.getLightValue() > viivaMax && ajaja.getPuoli() == 2) {
+				ajaja.kaarraVasemmalle();
+			}
+		
+			// Jos valoarvo viivaMin ja viivaMax arvojen välissä, robotti liikkuu suoraan eteenpäin
 			if (cSensori.getLightValue() > viivaMin && cSensori.getLightValue() < viivaMax){
 				ajaja.liiku();				
 			}
 		}
 		
+		// Jos vaihde on 0, robotti pysähtyy
 		if (ajaja.getVaihde() == 0){
 			ajaja.pysahdy();
 		}
