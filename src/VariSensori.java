@@ -58,7 +58,7 @@ public class VariSensori implements Runnable {
 
 		while (ajaja.getVaihde() == 1) {		
 			if (cSensori.getLightValue() < viivaMin) {
-				ajaja.kaarraOikealle();	
+				ajaja.kaarraOikealle();
 			} 
 			if (cSensori.getLightValue() > viivaMax) {
 				ajaja.kaarraVasemmalle();
@@ -72,4 +72,5 @@ public class VariSensori implements Runnable {
 			ajaja.pysahdy();
 		}
 	}
+
 }
