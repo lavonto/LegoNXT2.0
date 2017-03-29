@@ -1,6 +1,20 @@
+
 import lejos.nxt.UltrasonicSensor;
 import lejos.nxt.Button;
 import lejos.nxt.LCD;
+
+/**
+* <h1>AaniSensori</h1>
+* AaniSensori -luokka tutkii ultra‰‰nisensoria k‰ytt‰en, ett‰ 
+* onko l‰hell‰ jokin este, joka robotin tulee v‰ist‰‰.
+* 
+* run() -metodissa tutkitaan et‰isyytt‰ esteeseen ja jos este on
+* asetettua arvoa l‰hemp‰n‰, suorittaa robotti ajaja -luokan vaisto() -metodin
+* 
+* @author roope1301
+* @version 1.0
+* @since 29-03-2017
+*/
 
 public class AaniSensori implements Runnable {
 

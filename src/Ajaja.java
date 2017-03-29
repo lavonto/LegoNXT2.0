@@ -10,6 +10,7 @@ public class Ajaja {
 		this.pilotti = pilotti;
 	}
 
+	
 	public void kaarraOikealle() {
 		Motor.B.setSpeed(180);
 		Motor.A.setSpeed(360);
@@ -42,8 +43,8 @@ public class Ajaja {
 	}
 
 	public void liiku() {
-		Motor.B.setSpeed(360);
-		Motor.A.setSpeed(360);
+		Motor.A.setSpeed(180);
+		Motor.B.setSpeed(180);
 		Motor.A.forward();
 		Motor.B.forward();
 	}
