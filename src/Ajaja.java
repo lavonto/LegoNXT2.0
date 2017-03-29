@@ -62,6 +62,32 @@ public class Ajaja {
 		}
 	}
 
+	public void jyrkastiOikealle() {
+		Motor.B.setSpeed(nopeus/4);
+		Motor.A.setSpeed(nopeus);
+		Motor.A.forward();
+		Motor.B.forward();
+		try {
+			Thread.sleep(50);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	public void jyrkastiVasemmalle() {
+		Motor.B.setSpeed(nopeus);
+		Motor.A.setSpeed(nopeus/4);
+		Motor.A.forward();
+		Motor.B.forward();
+		try {
+			Thread.sleep(50);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 	public void pysahdy() {
 		Motor.A.stop(true);
 		Motor.B.stop(true);

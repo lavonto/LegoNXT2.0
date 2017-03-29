@@ -29,6 +29,8 @@ public class VariSensori implements Runnable {
 	private int viivaVari;
 	private int viivaMin;
 	private int viivaMax;
+	private int jyrkkaMin;
+	private int jyrkkaMax;
 	private ColorSensor cSensori;
 	private Ajaja ajaja;
 
@@ -46,6 +48,8 @@ public class VariSensori implements Runnable {
 		
 		viivaMin = viivaVari - 2;
 		viivaMax = viivaVari + 2;
+		jyrkkaMin = viivaVari - 10;
+		jyrkkaMax = viivaVari + 10;
 	}
 
 	public void run() {
@@ -67,8 +71,11 @@ public class VariSensori implements Runnable {
 			if (cSensori.getLightValue() > viivaMax && ajaja.getPuoli() == 1) {
 				ajaja.kaarraOikealle();
 			} 
-			if ((cSensori.getLightValue() < viivaMin && ajaja.getPuoli() == 1) || (cSensori.getLightValue() > viivaMax && ajaja.getPuoli() == 2)) {
+			if (cSensori.getLightValue() < viivaMin && ajaja.getPuoli() == 1) {
 				ajaja.kaarraVasemmalle();
+			}
+			if (cSensori.getLightValue() > jyrkkaMax && ajaja.getPuoli() == 1) {
+				ajaja.jyrkastiOikealle();
 			}
 			
 			// Oikean puolen viivan seuraajan kaartamiset
@@ -77,6 +84,9 @@ public class VariSensori implements Runnable {
 			}
 			if (cSensori.getLightValue() > viivaMax && ajaja.getPuoli() == 2) {
 				ajaja.kaarraVasemmalle();
+			}
+			if (cSensori.getLightValue() > jyrkkaMax && ajaja.getPuoli() == 2) {
+				ajaja.jyrkastiVasemmalle();
 			}
 		
 			// Jos valoarvo viivaMin ja viivaMax arvojen välissä, robotti liikkuu suoraan eteenpäin
