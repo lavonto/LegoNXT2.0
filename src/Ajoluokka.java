@@ -23,17 +23,19 @@ public class Ajoluokka {
 		ajaja = new Ajaja(pilotti);
 		ajastin = new Ajastin();
 
-		Runnable us = new AaniSensori(uSensori, ajaja);
-		Runnable vs = new VariSensori(cSensori, ajaja);
-		Thread aanisensori = new Thread(us);
-		Thread varisensori = new Thread(vs);
+		//Runnable us = new AaniSensori(uSensori, ajaja);
+		//Runnable vs = new VariSensori(cSensori, ajaja);
+		Runnable s = new Sensorit(cSensori, uSensori, ajaja, ajastin);
+		//Thread aanisensori = new Thread(us);
+		//Thread varisensori = new Thread(vs);
+		Thread sensori = new Thread(s);
 
 		// Ohjelma käynnistyy kun jotain nappia painetaan.
 		Button.waitForAnyPress();
 
-		// ajastin.aloitusaika();
-		aanisensori.start();
-		varisensori.start();
+		sensori.start();
+		//aanisensori.start();
+		//varisensori.start();
 		
 		
 	}
