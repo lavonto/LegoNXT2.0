@@ -68,7 +68,7 @@ public class VariSensori implements Runnable {
 		while (ajaja.getVaihde() == 1) {	
 			
 			// Vasemman puolen viivan seuraajan kaartamiset
-			if (cSensori.getLightValue() > viivaMax && ajaja.getPuoli() == 1) {
+			if (cSensori.getLightValue() > viivaMax && cSensori.getLightValue() <= jyrkkaMax && ajaja.getPuoli() == 1) {
 				ajaja.kaarraOikealle();
 			} 
 			if (cSensori.getLightValue() < viivaMin && ajaja.getPuoli() == 1) {
@@ -82,7 +82,7 @@ public class VariSensori implements Runnable {
 			if (cSensori.getLightValue() < viivaMin && ajaja.getPuoli() == 2) {
 				ajaja.kaarraOikealle();
 			}
-			if (cSensori.getLightValue() > viivaMax && ajaja.getPuoli() == 2) {
+			if (cSensori.getLightValue() > viivaMax && cSensori.getLightValue() <= jyrkkaMax && ajaja.getPuoli() == 2) {
 				ajaja.kaarraVasemmalle();
 			}
 			if (cSensori.getLightValue() > jyrkkaMax && ajaja.getPuoli() == 2) {

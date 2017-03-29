@@ -5,7 +5,7 @@ public class Ajaja {
 	
 	protected int vaihde;
 	protected int puoli;
-	private int nopeus = 360;
+	private int nopeus = 300;
 	private DifferentialPilot pilotti;
 	
 	Ajaja(DifferentialPilot pilotti) {
