@@ -4,7 +4,11 @@ import lejos.robotics.navigation.DifferentialPilot;
 public class Ajaja {
 	
 	protected int vaihde;
+<<<<<<< HEAD
 	protected int puoli;
+=======
+	private int nopeus = 360;
+>>>>>>> 926c8dd8d0a1651da8fa624e2e0ff03549e43714
 	private DifferentialPilot pilotti;
 	
 	
@@ -21,6 +25,7 @@ public class Ajaja {
 	public int getVaihde(){
 		return vaihde;
 	}
+<<<<<<< HEAD
 
 	public void setPuoli(int puoli){
 		this.puoli = puoli;
@@ -29,10 +34,20 @@ public class Ajaja {
 	public int getPuoli(){
 		return puoli;
 	}
+=======
+>>>>>>> 926c8dd8d0a1651da8fa624e2e0ff03549e43714
 	
+	public void setNopeus(int nopeus){
+		this.nopeus = nopeus;
+	}
+	
+	public int getNopeus() {
+		return nopeus;
+	}
+
 	public void kaarraOikealle() {
-		Motor.B.setSpeed(180);
-		Motor.A.setSpeed(360);
+		Motor.B.setSpeed(nopeus/2);
+		Motor.A.setSpeed(nopeus);
 		Motor.A.forward();
 		Motor.B.forward();
 		try {
@@ -44,8 +59,8 @@ public class Ajaja {
 	}
 
 	public void kaarraVasemmalle() {
-		Motor.B.setSpeed(360);
-		Motor.A.setSpeed(180);
+		Motor.B.setSpeed(nopeus);
+		Motor.A.setSpeed(nopeus/2);
 		Motor.A.forward();
 		Motor.B.forward();
 		try {
@@ -62,8 +77,8 @@ public class Ajaja {
 	}
 
 	public void liiku() {
-		Motor.A.setSpeed(180);
-		Motor.B.setSpeed(180);
+		Motor.A.setSpeed(nopeus);
+		Motor.B.setSpeed(nopeus);
 		Motor.A.forward();
 		Motor.B.forward();
 	}
