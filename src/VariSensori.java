@@ -60,7 +60,7 @@ public class VariSensori implements Runnable {
 		asetaVarit();
 		
 		// Asetetaan kumman puolen seuraaja
-		ajaja.setPuoli(2);
+		ajaja.setPuoli(1);
 		// Asetetaan vaihteenksi 1, jolloin VariSensorin if-lauseet on käytössä
 		ajaja.setVaihde(1);
 		
@@ -93,6 +93,13 @@ public class VariSensori implements Runnable {
 			if (cSensori.getLightValue() > viivaMin && cSensori.getLightValue() < viivaMax){
 				ajaja.liiku();				
 			}
+		}
+		
+		if (ajaja.getVaihde() == 3){
+			while (cSensori.getLightValue() > viivaMax){
+				ajaja.liiku();
+			}
+			ajaja.setVaihde(1);
 		}
 		
 		// Jos vaihde on 0, robotti pysähtyy

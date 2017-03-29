@@ -103,10 +103,10 @@ public class Ajaja {
 	public void vaisto() {
 		pysahdy();
 		kaanny(45);
-		pilotti.travel(10);
-		kaanny(-90);
-		pilotti.travel(10);
-		kaanny(45);
+		pilotti.travel(20);
+		kaanny(-120);
+		//pilotti.travel(20);
+		//kaanny(45);
 		
 	}
 

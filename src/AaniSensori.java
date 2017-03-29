@@ -36,7 +36,7 @@ public class AaniSensori implements Runnable {
 
 			if (ajaja.getVaihde() == 2) {
 				ajaja.vaisto();
-				ajaja.setVaihde(0);
+				ajaja.setVaihde(3);
 			}
 		}
 	}

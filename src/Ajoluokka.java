@@ -32,7 +32,7 @@ public class Ajoluokka {
 		Button.waitForAnyPress();
 
 		// ajastin.aloitusaika();
-		// aanisensori.start();
+		aanisensori.start();
 		varisensori.start();
 		
 		
