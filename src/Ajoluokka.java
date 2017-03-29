@@ -15,6 +15,7 @@ public class Ajoluokka {
 		final UltrasonicSensor uSensori;
 		final ColorSensor cSensori;
 		final Ajaja ajaja;
+		
 
 		pilotti = new DifferentialPilot(2.25f, 5.5f, Motor.A, Motor.B);
 		uSensori = new UltrasonicSensor(SensorPort.S1);
@@ -31,7 +32,7 @@ public class Ajoluokka {
 		Button.waitForAnyPress();
 
 		// ajastin.aloitusaika();
-		//aanisensori.start();
+		aanisensori.start();
 		varisensori.start();
 		
 		
