@@ -1,7 +1,14 @@
 import lejos.nxt.Motor;
+import lejos.robotics.navigation.DifferentialPilot;
 
 public class Ajaja {
 
+	DifferentialPilot pilotti;
+	
+	Ajaja(DifferentialPilot pilotti) {
+		this.pilotti = pilotti;
+	}
+	
 	public void kaarraOikealle() {
 		Motor.B.setSpeed(90);
 		Motor.A.setSpeed(180);
@@ -41,7 +48,7 @@ public class Ajaja {
 		Motor.B.forward();
 	}
 
-	/*public void vaisto() {
+	public void vaisto() {
 		pysahdy();
 		kaanny(45);
 		pilotti.travel(10);
@@ -52,6 +59,6 @@ public class Ajaja {
 
 	public void kaanny(int kulma) {
 		pilotti.rotate(kulma);
-	}*/
+	}
 
 }
