@@ -27,19 +27,16 @@ public class AaniSensori implements Runnable {
 	// Käynnistyy säikeen alussa
 	public void run() {
 		while (!Button.ESCAPE.isDown()) {
-			
-			if (uSensori.getDistance() < 20) {
-				
-				while (ajaja.getVaihde() == 1) {
-					if (uSensori.getDistance() < 20) {
-						ajaja.setVaihde(2);
-					}
-				}
 
-				if (ajaja.getVaihde() == 2) {
-					ajaja.vaisto();
-					ajaja.setVaihde(0);
+			while (ajaja.getVaihde() == 1) {
+				if (uSensori.getDistance() < 20) {
+					ajaja.setVaihde(2);
 				}
+			}
+
+			if (ajaja.getVaihde() == 2) {
+				ajaja.vaisto();
+				ajaja.setVaihde(0);
 			}
 		}
 	}
