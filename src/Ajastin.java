@@ -4,17 +4,24 @@ import lejos.nxt.Button;
  * <h1>Ajastin</h1>
  * <p>
  * Ajastinta k‰ytet‰‰n ajan laskemiseen.
- * Luokka sis‰lt‰‰ kolme metodia:
+ * 
+ * Luokan muuttujat:
+ * 	private long aloitus 		
+ *  private long lopetus
+ *  private double erotus
+ *  private double kulunutaika
+ *  
+ * Luokkan metodit:
  * 	aloitusaika()
- * 		Sijoittaa kutsuttaessa sen hetkisen j‰rjestelm‰ajan millisekunteina muuttujaan long aloitus
+ * 		Sijoittaa sen hetkisen j‰rjestelm‰ajan millisekunteina muuttujaan aloitus
  *  lopetusaika()
- *  	Sijoittaa kutsuttaessa sen hetkisen j‰rjestelm‰ajan millisekunteina muuttujaan long lopetus
+ *  	Sijoittaa sen hetkisen j‰rjestelm‰ajan millisekunteina muuttujaan lopetus
  *  kulunutaika()
- *  	Sijoittaa muuttujien aloitus ja lopetus erotuksen muuttujaan double erotus
- *  	Lopuksi jaetaan erotus tuhannella ja sijoitetaan se muuttujaan double kulunutaika
+ *  	Sijoittaa muuttujien aloitus ja lopetus erotuksen muuttujaan erotus
+ *  	Erotus jaetaan tuhannella ja sijoitetaan muuttujaan kulunutaika
  *  </p>
  *  
- * @author 
+ * @author Toni Lavonen 
  * @version 1.0
  * @since 29.3.2017
  */
@@ -36,7 +43,7 @@ public class Ajastin {
 
 	public void kulunutaika() {
 		erotus = lopetus - aloitus;
-		// Erotus on millisekuntteina
+		// Erotus on millisekuntteina. Muutetaan erotus sekunneiksi jakamalla arvo tuhannella.
 		kulunutaika = erotus / 1000;
 		System.out.println(kulunutaika);
 		Button.waitForAnyPress();
