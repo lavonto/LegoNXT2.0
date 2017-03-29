@@ -5,7 +5,7 @@ public class Ajaja {
 	
 	protected int vaihde;
 	protected int puoli;
-	private int nopeus = 300;
+	private int nopeus = 250;
 	private DifferentialPilot pilotti;
 	
 	Ajaja(DifferentialPilot pilotti) {
@@ -63,7 +63,7 @@ public class Ajaja {
 	}
 
 	public void jyrkastiOikealle() {
-		Motor.B.setSpeed(nopeus/4);
+		Motor.B.setSpeed(nopeus/8);
 		Motor.A.setSpeed(nopeus);
 		Motor.A.forward();
 		Motor.B.forward();
@@ -77,7 +77,7 @@ public class Ajaja {
 
 	public void jyrkastiVasemmalle() {
 		Motor.B.setSpeed(nopeus);
-		Motor.A.setSpeed(nopeus/4);
+		Motor.A.setSpeed(nopeus/8);
 		Motor.A.forward();
 		Motor.B.forward();
 		try {

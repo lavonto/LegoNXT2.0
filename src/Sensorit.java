@@ -64,6 +64,7 @@ public class Sensorit implements Runnable {
 					ajaja.kaarraOikealle();
 				}
 				if (cSensori.getLightValue() < viivaMin
+						&& cSensori.getLightValue() >= jyrkkaMin
 						&& ajaja.getPuoli() == 1) {
 					ajaja.kaarraVasemmalle();
 				}
@@ -71,9 +72,15 @@ public class Sensorit implements Runnable {
 						&& ajaja.getPuoli() == 1) {
 					ajaja.jyrkastiOikealle();
 				}
+				if (cSensori.getLightValue() < jyrkkaMin
+						&& ajaja.getPuoli() == 1) {
+					ajaja.jyrkastiVasemmalle();
+				}
+				
 
 				// Oikean puolen viivan seuraajan kaartamiset
 				if (cSensori.getLightValue() < viivaMin
+						&& cSensori.getLightValue() >= jyrkkaMin
 						&& ajaja.getPuoli() == 2) {
 					ajaja.kaarraOikealle();
 				}
@@ -85,6 +92,10 @@ public class Sensorit implements Runnable {
 				if (cSensori.getLightValue() > jyrkkaMax
 						&& ajaja.getPuoli() == 2) {
 					ajaja.jyrkastiVasemmalle();
+				}
+				if (cSensori.getLightValue() < jyrkkaMin
+						&& ajaja.getPuoli() == 2) {
+					ajaja.jyrkastiOikealle();
 				}
 
 				// Jos valoarvo viivaMin ja viivaMax arvojen välissä, robotti
