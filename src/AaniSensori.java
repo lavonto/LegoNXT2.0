@@ -15,10 +15,8 @@ public class AaniSensori implements Runnable {
 	// Käynnistyy säikeen alussa
 	public void run() {
 		while (!Button.ESCAPE.isDown()) {
-		
 			if (uSensori.getDistance() < 20) {
-				ajaja.pysahdy();
-				ajaja.liikkeessa = false;
+				ajaja.setVaihde(0);
 			}	
 		}
 	}

@@ -3,11 +3,19 @@ import lejos.robotics.navigation.DifferentialPilot;
 
 public class Ajaja {
 	
-	protected boolean liikkeessa;
+	protected int vaihde;
 	private DifferentialPilot pilotti;
 	
 	Ajaja(DifferentialPilot pilotti) {
 		this.pilotti = pilotti;
+	}
+	
+	public void setVaihde(int vaihde){
+		this.vaihde = vaihde;
+	}
+	
+	public int getVaihde(){
+		return vaihde;
 	}
 
 	public void kaarraOikealle() {
