@@ -1,5 +1,6 @@
 import lejos.nxt.Button;
 import lejos.nxt.ColorSensor;
+import lejos.nxt.LCD;
 import lejos.nxt.UltrasonicSensor;
 import lejos.robotics.navigation.DifferentialPilot;
 
@@ -29,16 +30,18 @@ public class Sensorit implements Runnable {
 	// maksimi arvot
 	public void asetaValoArvot() {
 		// Tallennetaan viivan arvo muuttujaan
-		System.out.println("Lue viiva");
+		LCD.drawString("Lue viivan", 2, 3);
+		LCD.drawString("valoarvo", 3, 4);
 		Button.waitForAnyPress();
 		viivaVari = cSensori.getLightValue();
 		Button.waitForAnyPress();
+		LCD.clear();
 
 		// Lasketaan kaartamista varten minimi ja maksimi arvot muuttujiin
 		viivaMin = viivaVari - 2;
 		viivaMax = viivaVari + 2;
-		jyrkkaMin = viivaVari - 10;
-		jyrkkaMax = viivaVari + 10;
+		jyrkkaMin = viivaVari - 15;
+		jyrkkaMax = viivaVari + 15;
 	}
 
 	public void run() {
@@ -119,11 +122,22 @@ public class Sensorit implements Runnable {
 			// Robotti väistää estettä
 			if (ajaja.getVaihe() == 2) {
 
-				// Jos este on havaittu, suoritetaan väistö
-				ajaja.vaisto();
+				// Jos robotti on vasemman puolen seuraaja, väistetään
+				// vasemmalta
+				if (ajaja.getPuoli() == 1) {
+					ajaja.vaistoVasemmalle();
 
-				// Väistön jälkeen, siirrytään vaiheeseen 3
-				ajaja.setVaihe(3);
+					// Väistön jälkeen, siirrytään vaiheeseen 3
+					ajaja.setVaihe(3);
+				}
+
+				// Jos robotti on oikean puolen seuraaja, väistetään oikealta
+				if (ajaja.getPuoli() == 2) {
+					ajaja.vaistoOikealle();
+
+					// Väistön jälkeen, siirrytään vaiheeseen 3
+					ajaja.setVaihe(3);
+				}
 			}
 
 			// Palataan takaisin viivalle väistön jälkeen
@@ -147,7 +161,8 @@ public class Sensorit implements Runnable {
 				ajastin.lopetusaika();
 
 				// Lasketaan kulunut aika
-				ajastin.kulunutaika();
+				LCD.drawString("Aikaa kului", 2, 3);
+				LCD.drawString(ajastin.kulunutaika(), 5, 4);
 			}
 
 		}
