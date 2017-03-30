@@ -15,28 +15,22 @@ public class Ajoluokka {
 		final UltrasonicSensor uSensori;
 		final ColorSensor cSensori;
 		final Ajaja ajaja;
-		
 
+		// Luodaan oliot
 		pilotti = new DifferentialPilot(2.25f, 5.5f, Motor.A, Motor.B);
 		uSensori = new UltrasonicSensor(SensorPort.S1);
 		cSensori = new ColorSensor(SensorPort.S2);
 		ajaja = new Ajaja(pilotti);
 		ajastin = new Ajastin();
 
-		//Runnable us = new AaniSensori(uSensori, ajaja);
-		//Runnable vs = new VariSensori(cSensori, ajaja);
+		// Tehd‰‰n s‰ie Sensorit -luokasta
 		Runnable s = new Sensorit(cSensori, uSensori, ajaja, ajastin);
-		//Thread aanisensori = new Thread(us);
-		//Thread varisensori = new Thread(vs);
 		Thread sensori = new Thread(s);
 
-		// Ohjelma k‰ynnistyy kun jotain nappia painetaan.
+		// Ohjelma k‰ynnistyy kun jotain nappia painetaan
 		Button.waitForAnyPress();
 
+		// S‰ie starttaa
 		sensori.start();
-		//aanisensori.start();
-		//varisensori.start();
-		
-		
 	}
 }

@@ -5,13 +5,13 @@ import lejos.robotics.navigation.DifferentialPilot;
 
 public class Sensorit implements Runnable {
 
+	// Alustukset
 	private int viivaVari;
 	private int viivaMin;
 	private int viivaMax;
 	private int jyrkkaMin;
 	private int jyrkkaMax;
 
-	private DifferentialPilot pilotti;
 	private Ajastin ajastin;
 	private UltrasonicSensor uSensori;
 	private ColorSensor cSensori;
@@ -25,13 +25,16 @@ public class Sensorit implements Runnable {
 		this.ajastin = ajastin;
 	}
 
-	public void asetaVarit() {
+	// Tallennetaan valoarvot muuttujaan, lasketaan tarvittavat minimi ja
+	// maksimi arvot
+	public void asetaValoArvot() {
 		// Tallennetaan viivan arvo muuttujaan
 		System.out.println("Lue viiva");
 		Button.waitForAnyPress();
 		viivaVari = cSensori.getLightValue();
 		Button.waitForAnyPress();
 
+		// Lasketaan kaartamista varten minimi ja maksimi arvot muuttujiin
 		viivaMin = viivaVari - 2;
 		viivaMax = viivaVari + 2;
 		jyrkkaMin = viivaVari - 10;
@@ -42,20 +45,23 @@ public class Sensorit implements Runnable {
 		// Laitetaan RGB Sensorin punainen valo p‰‰lle
 		cSensori.setFloodlight(true);
 
-		// Tallennetaan v‰rit muuttujaan
-		asetaVarit();
-		
+		// Tallennetaan valoarvot muuttujaan
+		asetaValoArvot();
+
 		// Asetetaan kumman puolen seuraaja
+		// Puoli 1 == vasemman puolen seuraaja ja puoli 2 == oikean puolen
 		ajaja.setPuoli(1);
-		
+
 		// Asetetaan vaihteenksi 1, jolloin VariSensorin if-lauseet on k‰ytˆss‰
-		ajaja.setVaihde(1);
+		ajaja.setVaihe(1);
+
+		// Aloitetaan ajanotto
 		ajastin.aloitusaika();
 
-		// Puoli 1 == vasemman puolen seuraaja ja puoli 2 == oikean puolen
-		// seuraaja
 		while (!Button.ESCAPE.isDown()) {
-			while (ajaja.getVaihde() == 1) {
+
+			// Robotti seuraa viivaa ja tutkii ultra‰‰nell‰ onko edess‰ estett‰
+			while (ajaja.getVaihe() == 1) {
 
 				// Vasemman puolen viivan seuraajan kaartamiset
 				if (cSensori.getLightValue() > viivaMax
@@ -76,7 +82,6 @@ public class Sensorit implements Runnable {
 						&& ajaja.getPuoli() == 1) {
 					ajaja.jyrkastiVasemmalle();
 				}
-				
 
 				// Oikean puolen viivan seuraajan kaartamiset
 				if (cSensori.getLightValue() < viivaMin
@@ -104,31 +109,47 @@ public class Sensorit implements Runnable {
 						&& cSensori.getLightValue() < viivaMax) {
 					ajaja.liiku();
 				}
-				
-				if (uSensori.getDistance() < 20) {
-					ajaja.setVaihde(2);
 
+				// Jos havaitaan este, siirryt‰‰n vaiheeseen 2
+				if (uSensori.getDistance() < 20) {
+					ajaja.setVaihe(2);
 				}
 			}
-				if (ajaja.getVaihde() == 2) {
-					ajaja.vaisto();
-					ajaja.setVaihde(3);
 
-				}
-				if (ajaja.getVaihde() == 3) {
-					while (cSensori.getLightValue() > viivaMax) {
-						ajaja.liiku();
-					}
-					ajaja.setVaihde(1);
+			// Robotti v‰ist‰‰ estett‰
+			if (ajaja.getVaihe() == 2) {
+
+				// Jos este on havaittu, suoritetaan v‰istˆ
+				ajaja.vaisto();
+
+				// V‰istˆn j‰lkeen, siirryt‰‰n vaiheeseen 3
+				ajaja.setVaihe(3);
+			}
+
+			// Palataan takaisin viivalle v‰istˆn j‰lkeen
+			if (ajaja.getVaihe() == 3) {
+
+				// Kun valoarvo on valkoisella eli yli viivaMax arvon, robotti
+				// liikkuu suoraan eteenp‰in
+				while (cSensori.getLightValue() > viivaMax) {
+					ajaja.liiku();
 				}
 
-				// Jos vaihde on 0, robotti pys‰htyy
-				if (ajaja.getVaihde() == 0) {
-					ajaja.pysahdy();
-					ajastin.lopetusaika();
-					ajastin.kulunutaika();
-				}
-			
+				// Viivalle palaamisen j‰lkeen, siirryt‰‰n takaisin vaiheeseen 1
+				ajaja.setVaihe(1);
+			}
+
+			// Robotti pys‰htyy
+			if (ajaja.getVaihe() == 0) {
+				ajaja.pysahdy();
+
+				// Lopetetaan ajanotto
+				ajastin.lopetusaika();
+
+				// Lasketaan kulunut aika
+				ajastin.kulunutaika();
+			}
+
 		}
 	}
 
