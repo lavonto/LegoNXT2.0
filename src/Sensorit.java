@@ -162,7 +162,7 @@ public class Sensorit implements Runnable {
 
 				// Lasketaan kulunut aika
 				LCD.drawString("Aikaa kului", 2, 3);
-				LCD.drawString(ajastin.kulunutaika(), 5, 4);
+				LCD.drawString(String.valueOf(ajastin.kulunutaika()), 5, 4);
 			}
 
 		}

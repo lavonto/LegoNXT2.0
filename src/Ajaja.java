@@ -1,6 +1,14 @@
 import lejos.nxt.Motor;
 import lejos.robotics.navigation.DifferentialPilot;
 
+/**
+ * Ajaja luokka sis‰lt‰‰ robotin ajonhallintaan vaikuttavia metodeja.
+ * 
+ * @author Toni Lavonen
+ * @version 1.0
+ * @since
+ */
+
 public class Ajaja {
 
 	// Alustukset
@@ -8,6 +16,11 @@ public class Ajaja {
 	protected int puoli;
 	private int nopeus = 250;
 	private DifferentialPilot pilotti;
+
+	/**
+	 * @param pilotti
+	 *            Ajaja saa Ajoluoka -luokassa luotu pilotti olion.
+	 */
 
 	Ajaja(DifferentialPilot pilotti) {
 		this.pilotti = pilotti;
@@ -37,6 +50,11 @@ public class Ajaja {
 		return nopeus;
 	}
 
+	/**
+	 * Hidastaa oikeanpuoleista moottoria. Asettaa moottori ajotilaan, mik‰ saa
+	 * robotin kaartamaan oikealle.
+	 */
+
 	// Robotti kaartaa loivasti oikealle
 	public void kaarraOikealle() {
 		Motor.B.setSpeed(nopeus / 2);
@@ -50,6 +68,11 @@ public class Ajaja {
 			e.printStackTrace();
 		}
 	}
+
+	/**
+	 * Hidastaa vasemmanpuoleista moottoria. Asettaa moottori ajotilaan, mik‰
+	 * saa robotin kaartamaan vasemmalle.
+	 */
 
 	// Robotti kaartaa loivasti vasemmalle
 	public void kaarraVasemmalle() {
@@ -65,6 +88,11 @@ public class Ajaja {
 		}
 	}
 
+	/**
+	 * Hidastaa oikeanpuoleista moottoria huomattavasti. Asettaa moottori
+	 * ajotilaan, mik‰ k‰‰nt‰‰ robottia tiukasti oikealle.
+	 */
+
 	// Robotti kaartaa jyrk‰sti oikealle
 	public void jyrkastiOikealle() {
 		Motor.B.setSpeed(nopeus / 8);
@@ -78,6 +106,11 @@ public class Ajaja {
 			e.printStackTrace();
 		}
 	}
+
+	/**
+	 * Hidastaa vasemmanpuoleista moottoria huomattavasti. Asettaa moottori
+	 * ajotilaan, mik‰ k‰‰nt‰‰ robottia tiukasti vasemmalle.
+	 */
 
 	// Robotti kaartaa jyrk‰sti vasemmalle
 	public void jyrkastiVasemmalle() {
@@ -93,11 +126,19 @@ public class Ajaja {
 		}
 	}
 
+	/**
+	 * Pys‰ytt‰‰ molemmat moottorit v‰littˆm‰sti.
+	 */
+
 	// Robotti pys‰htyy
 	public void pysahdy() {
 		Motor.A.stop(true);
 		Motor.B.stop(true);
 	}
+
+	/**
+	 * Asettaa moottorien nopeudet samanarvoisiksi. Asettaa moottorit ajotilaan.
+	 */
 
 	// Robotti liikkuu suoraan eteenp‰in
 	public void liiku() {
@@ -107,16 +148,30 @@ public class Ajaja {
 		Motor.B.forward();
 	}
 
-	// Robotti v‰ist‰‰ estett‰
-	public void vaisto() {
+	/**
+	 * Ohjaa robotin esteen ohi esteen vasemmalta puolelta.
+	 */
+
+	// Robotti v‰ist‰‰ estett‰ vasemmalta
+	public void vaistoVasemmalle() {
 		pysahdy();
-		kaanny(45);
+		pilotti.rotate(45);
 		pilotti.travel(20);
-		kaanny(-120);
+		pilotti.rotate(-120);
+		pilotti.rotate(45);
+		pilotti.travel(15);
+		pilotti.rotate(-120);
 	}
 
-	// Robotti k‰‰ntyy tiettyyn kulmaan
-	public void kaanny(int kulma) {
-		pilotti.rotate(kulma);
+	/**
+	 * Ohjaa robotin esteen ohi esteen oikealta puolelta.
+	 */
+
+	public void vaistoOikealle() {
+		pysahdy();
+		pilotti.rotate(-45);
+		pilotti.travel(15);
+		pilotti.rotate(120);
 	}
+
 }
