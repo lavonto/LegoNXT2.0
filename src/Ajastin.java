@@ -30,8 +30,10 @@ public class Ajastin {
 	// Alustukset
 	private long aloitus;
 	private long lopetus;
-	private double erotus;
-	private double kulunutaika;
+	private long erotus;
+	private long minuutit;
+	private long sekunnit;
+	private long kulunutaika;
 
 	/**
 	 * Hakee ajan millisekuntteina kutsumalla System.currentTimeMillis() ja
@@ -64,15 +66,24 @@ public class Ajastin {
 	 */
 
 	// Lasketaan kulunut aika
-	public double kulunutaika() {
+	public String kulunutaika() {
 		erotus = lopetus - aloitus;
 		// Erotus on millisekuntteina. Muutetaan erotus sekunneiksi jakamalla
 		// arvo tuhannella.
 		// Jaetaan arvo tuhannella.
 		kulunutaika = erotus / 1000;
-		System.out.println(kulunutaika);
-		Button.waitForAnyPress();
-		return kulunutaika;
+		//System.out.println(kulunutaika);
+		//Button.waitForAnyPress();
+		minuutit = (kulunutaika / 60);
+        sekunnit = (kulunutaika) - (minuutit * 60);
+        
+        if (kulunutaika < 60) {
+            return kulunutaika + " sec";
+        } else {
+            return minuutit + " min, " + sekunnit + " sec";
+        }
+		
+		
 	}
 
 }
