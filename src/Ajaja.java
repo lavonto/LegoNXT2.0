@@ -20,7 +20,7 @@ public class Ajaja {
 
 	/**
 	 * @param pilotti
-	 *            Ajaja saa Ajoluoka -luokassa luotu pilotti olion.
+	 *            Ajaja saa Ajoluoka -luokassa luodun pilotti olion.
 	 */
 
 	Ajaja(DifferentialPilot pilotti) {

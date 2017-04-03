@@ -1,24 +1,6 @@
 import lejos.nxt.Button;
 
 /**
- * <h1>Ajastin</h1>
- * <p>
- * Ajastinta k‰ytet‰‰n ajan laskemiseen.
- * </p>
- * <h2>Luokan muuttujat:</h2>
- * <p>
- * private long aloitus private long lopetus private double erotus private
- * double kulunutaika
- * <p>
- * <h2>Luokkan metodit:/
- * <h2>
- * <p>
- * aloitusaika() Sijoittaa sen hetkisen j‰rjestelm‰ajan millisekunteina
- * muuttujaan aloitus lopetusaika() Sijoittaa sen hetkisen j‰rjestelm‰ajan
- * millisekunteina muuttujaan lopetus kulunutaika() Sijoittaa muuttujien aloitus
- * ja lopetus erotuksen muuttujaan erotus Erotus jaetaan tuhannella ja
- * sijoitetaan muuttujaan kulunutaika
- * </p>
  * Ajastin laskee kuluneen ajan kahden pisteen v‰lilt‰ ja n‰ytt‰‰ tuloksen
  * 
  * @author Toni Lavonen
