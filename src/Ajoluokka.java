@@ -1,5 +1,4 @@
 import java.io.File;
-
 import lejos.nxt.Button;
 import lejos.nxt.ColorSensor;
 import lejos.nxt.Motor;
@@ -7,6 +6,17 @@ import lejos.nxt.SensorPort;
 import lejos.nxt.UltrasonicSensor;
 import lejos.robotics.navigation.DifferentialPilot;
 import lejos.nxt.Sound;
+
+/**
+ * 
+ * Ajoluokka -luokassa alustetaan ja luodaan oliot luokille DifferentialPilot, Ajastin, UltrasonicSensor,
+ * ColorSensor ja Ajaja. Luokassa luodaan s‰ie Sensorit luokasta ja k‰ynnistet‰‰n se. Ohjelman k‰ynnistyess‰ toistetaan
+ * ‰‰nitiedosto k‰ytt‰m‰ll‰ Sound -luokan playSample -metodia.
+ * 
+ * @author Roope Kuikka
+ * @version 1.0
+ *
+ */
 
 public class Ajoluokka {
 
