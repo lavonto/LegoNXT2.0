@@ -1,9 +1,12 @@
+import java.io.File;
+
 import lejos.nxt.Button;
 import lejos.nxt.ColorSensor;
 import lejos.nxt.Motor;
 import lejos.nxt.SensorPort;
 import lejos.nxt.UltrasonicSensor;
 import lejos.robotics.navigation.DifferentialPilot;
+import lejos.nxt.Sound;
 
 public class Ajoluokka {
 
@@ -29,7 +32,8 @@ public class Ajoluokka {
 
 		// Ohjelma käynnistyy kun jotain nappia painetaan
 		Button.waitForAnyPress();
-
+		Sound.playSample(new File("otus.wav"));
+		
 		// Säie starttaa
 		sensori.start();
 	}

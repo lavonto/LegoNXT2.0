@@ -15,6 +15,7 @@ public class Ajaja {
 	protected int vaihe;
 	protected int puoli;
 	private int nopeus = 250;
+	protected int i; 
 	private DifferentialPilot pilotti;
 
 	/**
@@ -158,9 +159,7 @@ public class Ajaja {
 		pilotti.rotate(45);
 		pilotti.travel(20);
 		pilotti.rotate(-120);
-		pilotti.rotate(45);
-		pilotti.travel(15);
-		pilotti.rotate(-120);
+		i++;
 	}
 
 	/**
@@ -172,6 +171,7 @@ public class Ajaja {
 		pilotti.rotate(-45);
 		pilotti.travel(15);
 		pilotti.rotate(120);
+		i++;
 	}
 
 }

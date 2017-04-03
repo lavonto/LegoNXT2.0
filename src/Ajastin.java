@@ -78,9 +78,9 @@ public class Ajastin {
         sekunnit = (kulunutaika) - (minuutit * 60);
         
         if (kulunutaika < 60) {
-            return kulunutaika + " sec";
+            return kulunutaika + " sek";
         } else {
-            return minuutit + " min, " + sekunnit + " sec";
+            return minuutit + " min " + sekunnit + " sek";
         }
 		
 		
