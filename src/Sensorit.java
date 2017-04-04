@@ -33,10 +33,6 @@ public class Sensorit implements Runnable {
 	 * @param ajaja
 	 * 			Sensorit saa Ajoluokka -luokassa luodun ColorSensor -olion.
 	 * @param ajastin
-<<<<<<< HEAD
-=======
-	 *			Sensorit saa Ajoluokka -luokassa luodun Ajastin -olion.
->>>>>>> refs/remotes/origin/master
 	 */
 	
 	Sensorit(ColorSensor cSensori, UltrasonicSensor uSensori, Ajaja ajaja, Ajastin ajastin) {
@@ -56,12 +52,12 @@ public class Sensorit implements Runnable {
 	public void asetaValoArvot() {
 		// Tallennetaan viivan arvo muuttujaan
 		LCD.drawString("Luetaan reunan", 1, 2);
-		LCD.drawString("valoarvo", 1, 3);
+		LCD.drawString("valoarvo", 2, 3);
 		LCD.drawString("Paina ENTER", 3, 5);
 		LCD.drawString("jatkaaksesi", 3, 6);
 		
 		while(!Button.ENTER.isDown()){
-		LCD.drawInt(cSensori.getLightValue(), 10, 3);
+		LCD.drawInt(cSensori.getLightValue(), 11, 3);
 		}
 		LCD.clear();
 		viivaVari = cSensori.getLightValue();
@@ -226,11 +222,11 @@ public class Sensorit implements Runnable {
 
 		// Lasketaan kulunut aika
 		LCD.drawString("Aikaa kului", 3, 2);
-		LCD.drawString(ajastin.kulunutaika(), 3, 3);
+		LCD.drawString(ajastin.kulunutaika(), 2, 3);
 		LCD.drawString("Paina ENTER", 3, 5);
 		LCD.drawString("lopettaaksesi", 2, 6);
 		
-		Button.ENTER.waitForPress();
+		Button.ENTER.waitForPressAndRelease();
 	}
 
 }

@@ -1,6 +1,7 @@
 import java.io.File;
 import lejos.nxt.Button;
 import lejos.nxt.ColorSensor;
+import lejos.nxt.LCD;
 import lejos.nxt.Motor;
 import lejos.nxt.SensorPort;
 import lejos.nxt.UltrasonicSensor;
@@ -40,9 +41,12 @@ public class Ajoluokka {
 		Runnable s = new Sensorit(cSensori, uSensori, ajaja, ajastin);
 		Thread sensori = new Thread(s);
 
-		// Ohjelma käynnistyy kun jotain nappia painetaan
-		Button.waitForAnyPress();
+		// Ohjelma käynnistyy
 		Sound.playSample(new File("otus.wav"));
+		LCD.drawString("Paina ENTER", 3, 2);
+		LCD.drawString("aloittaaksesi", 2, 3);
+		Button.ENTER.waitForPressAndRelease();
+		LCD.clear();
 		
 		// Säie starttaa
 		sensori.start();

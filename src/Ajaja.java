@@ -192,6 +192,7 @@ public class Ajaja {
 	 * Ohjaa robotin esteen ohi esteen oikealta puolelta.
 	 */
 
+	// Robotti v‰ist‰‰ estett‰ oikealta
 	public void vaistoOikealle() {
 		pysahdy();
 		LCD.drawString("Oikea vaisto", 1, 2);

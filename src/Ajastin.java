@@ -1,4 +1,3 @@
-
 import lejos.nxt.LCD;
 
 /**
@@ -18,14 +17,18 @@ public class Ajastin {
 	private long sekunnit;
 	private long kulunutaika;
 
-	// Robotti lähtee liikkeelle viiden sekunnin jälkeen
-	// näyttäen jäljellä olevat sekunnit näytöllä
+	/** 
+	 * Lähdetäänliikkeelle viiden sekunnin jälkeen
+	 * Näytetään jäljellä olevat sekunnit näytöllä
+	 */
+	
+	// Suoritetaan viiden sekunnin lähtölaskenta
 	public void liikkeelleLahto() {
 
 		LCD.drawString("Aloittamiseen", 2, 2);
 		for (int i = 5; i > 0; i--) {
 			
-			LCD.drawString("aikaa " + i + " sec", 3, 3);
+			LCD.drawString("aikaa " + i + " sek", 3, 3);
 			try {
 				Thread.sleep(1000);
 			} catch (InterruptedException e) {
@@ -73,12 +76,9 @@ public class Ajastin {
 		kulunutaika = erotus / 1000;
 		minuutit = (kulunutaika / 60);
 		sekunnit = (kulunutaika) - (minuutit * 60);
-
-		if (kulunutaika < 60) {
-			return kulunutaika + " sek";
-		} else {
-			return minuutit + " min " + sekunnit + " sek";
-		}
+		
+		return minuutit + " min " + sekunnit + " sek";
+		
 
 	}
 
