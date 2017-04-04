@@ -28,11 +28,15 @@ public class Sensorit implements Runnable {
 	private Ajaja ajaja;
 
 	/**
-	 * @param cSensori
+	 * @param cSensor
+	 * 			Sensorit saa Ajoluokka -luokassa luodun ColorSensor -olion.
 	 * @param uSensori
+	 * 			Sensorit saa Ajoluokka -luokassa luodun UltrasonicSensor -olion.
 	 * @param ajaja
+	 * 			Sensorit saa Ajoluokka -luokassa luodun ColorSensor -olion.
 	 * @param ajastin
-	 * 		Sensorit saa Ajoluokka -luokassa luodut ColorSensor, UltrasonicSensor ja Ajaja -oliot.
+	 * 			Sensorit saa Ajoluokka -luokassa luodun Ajastin -olion.
+	 * 		
 	 */
 	
 	Sensorit(ColorSensor cSensori, UltrasonicSensor uSensori, Ajaja ajaja,
