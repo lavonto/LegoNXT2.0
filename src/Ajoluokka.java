@@ -46,5 +46,6 @@ public class Ajoluokka {
 		
 		// Säie starttaa
 		sensori.start();
+		
 	}
 }

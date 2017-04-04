@@ -33,6 +33,10 @@ public class Sensorit implements Runnable {
 	 * @param ajaja
 	 * 			Sensorit saa Ajoluokka -luokassa luodun ColorSensor -olion.
 	 * @param ajastin
+<<<<<<< HEAD
+=======
+	 *			Sensorit saa Ajoluokka -luokassa luodun Ajastin -olion.
+>>>>>>> refs/remotes/origin/master
 	 */
 	
 	Sensorit(ColorSensor cSensori, UltrasonicSensor uSensori, Ajaja ajaja, Ajastin ajastin) {
@@ -104,7 +108,7 @@ public class Sensorit implements Runnable {
 		ajaja.setPuoli(1);
 		ajaja.setVaistetty(false);
 		ajaja.setAjossa(true);
-
+		ajastin.liikkeelleLahto();
 		// Asetetaan vaihteenksi 1, jolloin VariSensorin if-lauseet on käytössä
 		ajaja.setVaihe(1);
 		

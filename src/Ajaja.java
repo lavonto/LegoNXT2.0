@@ -1,3 +1,4 @@
+import lejos.nxt.LCD;
 import lejos.nxt.Motor;
 import lejos.robotics.navigation.DifferentialPilot;
 
@@ -75,6 +76,7 @@ public class Ajaja {
 
 	// Robotti kaartaa loivasti oikealle
 	public void kaarraOikealle() {
+		LCD.drawString("Oikealle", 1, 2);
 		Motor.B.setSpeed(nopeus / 2);
 		Motor.A.setSpeed(nopeus);
 		Motor.A.forward();
@@ -84,6 +86,7 @@ public class Ajaja {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
+		LCD.clear();
 	}
 
 	/**
@@ -93,6 +96,7 @@ public class Ajaja {
 
 	// Robotti kaartaa loivasti vasemmalle
 	public void kaarraVasemmalle() {
+		LCD.drawString("Vasemmalle", 1, 2);
 		Motor.B.setSpeed(nopeus);
 		Motor.A.setSpeed(nopeus / 2);
 		Motor.A.forward();
@@ -102,6 +106,7 @@ public class Ajaja {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
+		LCD.clear();
 	}
 
 	/**
@@ -111,6 +116,7 @@ public class Ajaja {
 
 	// Robotti kaartaa jyrk‰sti oikealle
 	public void jyrkastiOikealle() {
+		LCD.drawString("Jyrkka oikea", 1, 2);
 		Motor.B.setSpeed(nopeus / 8);
 		Motor.A.setSpeed(nopeus);
 		Motor.A.forward();
@@ -120,6 +126,7 @@ public class Ajaja {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
+		LCD.clear();
 	}
 
 	/**
@@ -129,6 +136,7 @@ public class Ajaja {
 
 	// Robotti kaartaa jyrk‰sti vasemmalle
 	public void jyrkastiVasemmalle() {
+		LCD.drawString("Jyrkka vasen", 1, 2);
 		Motor.B.setSpeed(nopeus);
 		Motor.A.setSpeed(nopeus / 8);
 		Motor.A.forward();
@@ -138,6 +146,7 @@ public class Ajaja {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
+		LCD.clear();
 	}
 
 	/**
@@ -156,10 +165,12 @@ public class Ajaja {
 
 	// Robotti liikkuu suoraan eteenp‰in
 	public void liiku() {
+		LCD.drawString("Suoraan", 1, 2);
 		Motor.A.setSpeed(nopeus);
 		Motor.B.setSpeed(nopeus);
 		Motor.A.forward();
 		Motor.B.forward();
+		LCD.clear();
 	}
 
 	/**
@@ -169,10 +180,12 @@ public class Ajaja {
 	// Robotti v‰ist‰‰ estett‰ vasemmalta
 	public void vaistoVasemmalle() {
 		pysahdy();
+		LCD.drawString("Vasen vaisto", 1, 2);
 		pilotti.rotate(45);
 		pilotti.travel(20);
 		pilotti.rotate(-90);
 		setVaistetty(true);
+		LCD.clear();
 	}
 
 	/**
@@ -181,10 +194,12 @@ public class Ajaja {
 
 	public void vaistoOikealle() {
 		pysahdy();
+		LCD.drawString("Oikea vaisto", 1, 2);
 		pilotti.rotate(-45);
 		pilotti.travel(15);
 		pilotti.rotate(90);
 		setVaistetty(true);
+		LCD.clear();
 	}
 
 }
