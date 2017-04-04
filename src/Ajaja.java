@@ -15,12 +15,13 @@ public class Ajaja {
 	protected int vaihe;
 	protected int puoli;
 	private int nopeus = 250;
-	protected int i; 
+	private boolean vaistetty; 
+	private boolean ajossa;
 	private DifferentialPilot pilotti;
 
 	/**
 	 * @param pilotti
-	 *            Ajaja saa Ajoluoka -luokassa luodun pilotti olion.
+	 * Ajaja saa Ajoluoka -luokassa luodun pilotti olion.
 	 */
 
 	Ajaja(DifferentialPilot pilotti) {
@@ -50,6 +51,22 @@ public class Ajaja {
 	public int getNopeus() {
 		return nopeus;
 	}
+	
+	public void setVaistetty(boolean vaistetty) {
+		this.vaistetty = vaistetty;
+	}
+	
+	public boolean getVaistetty() {
+		return vaistetty;
+	}
+
+	public void setAjossa(boolean ajossa) {
+		this.ajossa = ajossa;
+	}
+	
+	public boolean getAjossa() {
+		return ajossa;
+	}
 
 	/**
 	 * Hidastaa oikeanpuoleista moottoria. Asettaa moottori ajotilaan, mikä saa
@@ -65,7 +82,6 @@ public class Ajaja {
 		try {
 			Thread.sleep(50);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -84,7 +100,6 @@ public class Ajaja {
 		try {
 			Thread.sleep(50);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -103,7 +118,6 @@ public class Ajaja {
 		try {
 			Thread.sleep(50);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -122,7 +136,6 @@ public class Ajaja {
 		try {
 			Thread.sleep(50);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -158,8 +171,8 @@ public class Ajaja {
 		pysahdy();
 		pilotti.rotate(45);
 		pilotti.travel(20);
-		pilotti.rotate(-120);
-		i++;
+		pilotti.rotate(-90);
+		setVaistetty(true);
 	}
 
 	/**
@@ -170,8 +183,8 @@ public class Ajaja {
 		pysahdy();
 		pilotti.rotate(-45);
 		pilotti.travel(15);
-		pilotti.rotate(120);
-		i++;
+		pilotti.rotate(90);
+		setVaistetty(true);
 	}
 
 }

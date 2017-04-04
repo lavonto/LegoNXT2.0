@@ -20,7 +20,6 @@ public class Sensorit implements Runnable {
 	private int viivaMax;
 	private int jyrkkaMin;
 	private int jyrkkaMax;
-	private boolean ajossa;
 
 	private Ajastin ajastin;
 	private UltrasonicSensor uSensori;
@@ -32,11 +31,10 @@ public class Sensorit implements Runnable {
 	 * @param uSensori
 	 * @param ajaja
 	 * @param ajastin
-	 * 		Sensorit saa Ajoluokka -luokassa luodut ColorSensor, UltrasonicSensor ja Ajaja -oliot.
+	 * Sensorit saa Ajoluokka -luokassa luodut ColorSensor, UltrasonicSensor ja Ajaja -oliot.
 	 */
 	
-	Sensorit(ColorSensor cSensori, UltrasonicSensor uSensori, Ajaja ajaja,
-			Ajastin ajastin) {
+	Sensorit(ColorSensor cSensori, UltrasonicSensor uSensori, Ajaja ajaja, Ajastin ajastin) {
 		this.cSensori = cSensori;
 		this.uSensori = uSensori;
 		this.ajaja = ajaja;
@@ -99,15 +97,17 @@ public class Sensorit implements Runnable {
 		// Asetetaan kumman puolen seuraaja
 		// Puoli 1 == vasemman puolen seuraaja ja puoli 2 == oikean puolen
 		ajaja.setPuoli(1);
+		ajaja.setVaistetty(false);
+		ajaja.setAjossa(true);
 
 		// Asetetaan vaihteenksi 1, jolloin VariSensorin if-lauseet on käytössä
 		ajaja.setVaihe(1);
-		ajossa = true;
+		
 
 		// Aloitetaan ajanotto
 		ajastin.aloitusaika();
 
-		while (!Button.ESCAPE.isDown()) {
+		while (ajaja.getAjossa() == true) {
 
 			// Robotti seuraa viivaa ja tutkii ultraäänellä onko edessä estettä
 			while (ajaja.getVaihe() == 1) {
@@ -161,7 +161,7 @@ public class Sensorit implements Runnable {
 
 				// Jos havaitaan este, siirrytään vaiheeseen 2
 				if (uSensori.getDistance() < 20) {
-					if(ajaja.i == 1) {
+					if(ajaja.getVaistetty() == true) {
 						ajaja.setVaihe(0);
 					}
 					else {
@@ -188,8 +188,7 @@ public class Sensorit implements Runnable {
 
 					// Väistön jälkeen, siirrytään vaiheeseen 3
 					ajaja.setVaihe(3);
-				}
-					
+				}	
 			}
 
 			// Palataan takaisin viivalle väistön jälkeen
@@ -210,16 +209,19 @@ public class Sensorit implements Runnable {
 				ajaja.pysahdy();
 				cSensori.setFloodlight(false);
 				uSensori.off();
+				ajaja.setAjossa(false);
 			}
 		}
 		// Lopetetaan ajanotto
 		ajastin.lopetusaika();
 
 		// Lasketaan kulunut aika
-		LCD.drawString("Aikaa kului", 3, 3);
-		LCD.drawString(ajastin.kulunutaika(), 3, 4);
-		Button.waitForAnyPress();
-
+		LCD.drawString("Aikaa kului", 3, 2);
+		LCD.drawString(ajastin.kulunutaika(), 3, 3);
+		LCD.drawString("Paina ENTER", 3, 4);
+		LCD.drawString("lopettaaksesi", 2, 5);
+		
+		Button.ENTER.waitForPress();
 	}
 
 }
