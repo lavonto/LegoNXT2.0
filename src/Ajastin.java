@@ -1,4 +1,3 @@
-import lejos.nxt.Button;
 
 /**
  * Ajastin laskee kuluneen ajan kahden pisteen v‰lilt‰ ja n‰ytt‰‰ tuloksen
@@ -24,7 +23,6 @@ public class Ajastin {
 
 	// Aloitetaan ajanotto
 	public void aloitusaika() {
-		// System.currentTimeMillis() palauttaa j‰rjestelm‰ajan millisekunteina.
 		aloitus = System.currentTimeMillis();
 	}
 
@@ -50,12 +48,9 @@ public class Ajastin {
 	// Lasketaan kulunut aika
 	public String kulunutaika() {
 		erotus = lopetus - aloitus;
-		// Erotus on millisekuntteina. Muutetaan erotus sekunneiksi jakamalla
-		// arvo tuhannella.
+		
 		// Jaetaan arvo tuhannella.
 		kulunutaika = erotus / 1000;
-		//System.out.println(kulunutaika);
-		//Button.waitForAnyPress();
 		minuutit = (kulunutaika / 60);
         sekunnit = (kulunutaika) - (minuutit * 60);
         

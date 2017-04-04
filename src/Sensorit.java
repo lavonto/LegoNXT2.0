@@ -2,7 +2,6 @@ import lejos.nxt.Button;
 import lejos.nxt.ColorSensor;
 import lejos.nxt.LCD;
 import lejos.nxt.UltrasonicSensor;
-import lejos.robotics.navigation.DifferentialPilot;
 
 /**
  * Sensorit seuraa viivaa, havaitsee edessä olevan esteen ja tulostaa kuluneen ajan.
@@ -34,12 +33,6 @@ public class Sensorit implements Runnable {
 	 * @param ajaja
 	 * 			Sensorit saa Ajoluokka -luokassa luodun ColorSensor -olion.
 	 * @param ajastin
-<<<<<<< HEAD
-	 * Sensorit saa Ajoluokka -luokassa luodut ColorSensor, UltrasonicSensor ja Ajaja -oliot.
-=======
-	 * 			Sensorit saa Ajoluokka -luokassa luodun Ajastin -olion.
-	 * 		
->>>>>>> refs/remotes/origin/master
 	 */
 	
 	Sensorit(ColorSensor cSensori, UltrasonicSensor uSensori, Ajaja ajaja, Ajastin ajastin) {
@@ -58,13 +51,17 @@ public class Sensorit implements Runnable {
 	// maksimi arvot
 	public void asetaValoArvot() {
 		// Tallennetaan viivan arvo muuttujaan
-		LCD.drawString("Lue viivan", 2, 3);
-		LCD.drawString("valoarvo", 3, 4);
-		Button.waitForAnyPress();
-		viivaVari = cSensori.getLightValue();
-		Button.waitForAnyPress();
+		LCD.drawString("Luetaan reunan", 1, 2);
+		LCD.drawString("valoarvo", 1, 3);
+		LCD.drawString("Paina ENTER", 3, 5);
+		LCD.drawString("jatkaaksesi", 3, 6);
+		
+		while(!Button.ENTER.isDown()){
+		LCD.drawInt(cSensori.getLightValue(), 10, 3);
+		}
 		LCD.clear();
-
+		viivaVari = cSensori.getLightValue();
+		
 		// Lasketaan kaartamista varten minimi ja maksimi arvot muuttujiin
 		viivaMin = viivaVari - 2;
 		viivaMax = viivaVari + 2;
@@ -226,8 +223,8 @@ public class Sensorit implements Runnable {
 		// Lasketaan kulunut aika
 		LCD.drawString("Aikaa kului", 3, 2);
 		LCD.drawString(ajastin.kulunutaika(), 3, 3);
-		LCD.drawString("Paina ENTER", 3, 4);
-		LCD.drawString("lopettaaksesi", 2, 5);
+		LCD.drawString("Paina ENTER", 3, 5);
+		LCD.drawString("lopettaaksesi", 2, 6);
 		
 		Button.ENTER.waitForPress();
 	}
