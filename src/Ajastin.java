@@ -30,7 +30,7 @@ public class Ajastin {
 
 		LCD.drawString("Aloittamiseen", 2, 2);
 		for (int i = 5; i > 0; i--) {
-			Sound.playSample(new File("otus.wav"));
+			Sound.playSample(new File("luku.wav"));
 			LCD.drawString("aikaa " + i + " sek", 3, 3);
 			try {
 				Thread.sleep(1000);
@@ -39,7 +39,6 @@ public class Ajastin {
 			}
 		}
 		LCD.clear();
-
 	}
 
 	/**
@@ -82,7 +81,6 @@ public class Ajastin {
 		
 		return minuutit + " min " + sekunnit + " sek";
 		
-
 	}
 
 }

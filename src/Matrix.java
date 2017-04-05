@@ -1,5 +1,7 @@
+import java.io.File;
 import lejos.nxt.Button;
 import lejos.nxt.LCD;
+import lejos.nxt.Sound;
 
 /**
  * 
@@ -39,8 +41,15 @@ public class Matrix {
 			"                ",
 	};
 	
-	// Tulostaa stringit robotin näytölle drawString -metodilla
+	/**
+	 *  Tulostaa stringit robotin näytölle drawString -metodilla
+	 */
+	
+	// Tulostetaan kuvio robotin näytölle
 	public void ajaIntro(){
+		
+		Sound.playSample(new File("vaisto.wav"));
+		
 		for (int i = 0; i < rivit.length-6; i++) {
 			LCD.clear();
 			LCD.drawString(rivit[i+6], 0, 1);
@@ -55,12 +64,17 @@ public class Matrix {
 		Button.ENTER.waitForPressAndRelease();
 		LCD.clear();
 	}
-	// Saa robotin odottamaan halutun ajan ennen uusien stringien tulostamista
+	
+	/**
+	 * Saa robotin odottamaan halutun ajan ennen uusien stringien tulostamista
+	 * @param millisek Metodi saa parametrinä ajan
+	 */
+	
+	// Odotetaan 
 	public void odota(int millisek){
 		try {
 			Thread.sleep(millisek);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

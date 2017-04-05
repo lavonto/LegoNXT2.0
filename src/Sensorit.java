@@ -1,6 +1,8 @@
+import java.io.File;
 import lejos.nxt.Button;
 import lejos.nxt.ColorSensor;
 import lejos.nxt.LCD;
+import lejos.nxt.Sound;
 import lejos.nxt.UltrasonicSensor;
 
 /**
@@ -177,6 +179,7 @@ public class Sensorit implements Runnable {
 
 			// Robotti v‰ist‰‰ estett‰
 			if (ajaja.getVaihe() == 2) {
+				Sound.playSample(new File("vaisto.wav"));
 
 				// Jos robotti on vasemman puolen seuraaja, v‰istet‰‰n
 				// vasemmalta
