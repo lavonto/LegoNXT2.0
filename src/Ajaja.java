@@ -7,7 +7,7 @@ import lejos.robotics.navigation.DifferentialPilot;
  * 
  * @author Toni Lavonen
  * @version 1.0
- * @since
+ * @since 22.3.2017
  */
 
 public class Ajaja {

@@ -8,7 +8,7 @@ import lejos.nxt.UltrasonicSensor;
  * 
  * @author Karoliina Kunnas
  * @version 1.0
- * @since
+ * @since 29.3.2017
  */
 
 public class Sensorit implements Runnable {

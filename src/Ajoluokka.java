@@ -16,7 +16,7 @@ import lejos.nxt.Sound;
  * 
  * @author Roope Kuikka
  * @version 1.0
- *
+ * @since 22.3.2017
  */
 
 public class Ajoluokka {
@@ -45,10 +45,6 @@ public class Ajoluokka {
 
 		// Ohjelma käynnistyy
 		Sound.playSample(new File("otus.wav"));
-		LCD.drawString("Paina ENTER", 3, 2);
-		LCD.drawString("aloittaaksesi", 2, 3);
-		Button.ENTER.waitForPressAndRelease();
-		LCD.clear();
 		matrix.ajaIntro();
 		
 		// Säie starttaa
