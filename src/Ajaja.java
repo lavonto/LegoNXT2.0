@@ -13,9 +13,9 @@ import lejos.robotics.navigation.DifferentialPilot;
 public class Ajaja {
 
 	// Alustukset
-	protected int vaihe;
-	protected int puoli;
-	private int nopeus = 250;
+	private int vaihe;
+	private int puoli;
+	private int nopeus;
 	private boolean vaistetty; 
 	private boolean ajossa;
 	private DifferentialPilot pilotti;
@@ -76,7 +76,7 @@ public class Ajaja {
 
 	// Robotti kaartaa loivasti oikealle
 	public void kaarraOikealle() {
-		LCD.drawString("Oikealle", 1, 2);
+		LCD.drawString("Oikealle", 4, 2);
 		Motor.B.setSpeed(nopeus / 2);
 		Motor.A.setSpeed(nopeus);
 		Motor.A.forward();
@@ -91,7 +91,7 @@ public class Ajaja {
 
 	// Robotti kaartaa loivasti vasemmalle
 	public void kaarraVasemmalle() {
-		LCD.drawString("Vasemmalle", 1, 2);
+		LCD.drawString("Vasemmalle", 2, 2);
 		Motor.B.setSpeed(nopeus);
 		Motor.A.setSpeed(nopeus / 2);
 		Motor.A.forward();
@@ -106,7 +106,7 @@ public class Ajaja {
 
 	// Robotti kaartaa jyrk‰sti oikealle
 	public void jyrkastiOikealle() {
-		LCD.drawString("Jyrkka oikea", 1, 2);
+		LCD.drawString("Jyrkka oikea", 2, 2);
 		Motor.A.setSpeed(nopeus + nopeus/2);
 		Motor.B.setSpeed(nopeus / 3);
 		Motor.A.forward();
@@ -121,7 +121,7 @@ public class Ajaja {
 
 	// Robotti kaartaa jyrk‰sti vasemmalle
 	public void jyrkastiVasemmalle() {
-		LCD.drawString("Jyrkka vasen", 1, 2);
+		LCD.drawString("Jyrkka vasen", 2, 2);
 		Motor.B.setSpeed(nopeus + nopeus/2);
 		Motor.A.setSpeed(nopeus / 3);
 		Motor.A.forward();
@@ -145,7 +145,7 @@ public class Ajaja {
 
 	// Robotti liikkuu suoraan eteenp‰in
 	public void liiku() {
-		LCD.drawString("Suoraan", 1, 2);
+		LCD.drawString("Suoraan", 4, 2);
 		Motor.A.setSpeed(nopeus);
 		Motor.B.setSpeed(nopeus);
 		Motor.A.forward();
@@ -160,7 +160,7 @@ public class Ajaja {
 	// Robotti v‰ist‰‰ estett‰ vasemmalta
 	public void vaistoVasemmalle() {
 		pysahdy();
-		LCD.drawString("Vasen vaisto", 1, 2);
+		LCD.drawString("Vasen vaisto", 2, 2);
 		pilotti.rotate(45);
 		pilotti.travel(12);
 		pilotti.rotate(-85);
@@ -175,7 +175,7 @@ public class Ajaja {
 	// Robotti v‰ist‰‰ estett‰ oikealta
 	public void vaistoOikealle() {
 		pysahdy();
-		LCD.drawString("Oikea vaisto", 1, 2);
+		LCD.drawString("Oikea vaisto", 3, 2);
 		pilotti.rotate(-45);
 		pilotti.travel(12);
 		pilotti.rotate(85);

@@ -4,7 +4,6 @@ import lejos.nxt.LCD;
 import lejos.nxt.Sound;
 
 /**
- * 
  * Matrix -luokka tulostaa robotin näytölle stringejä asetetun ajan välein
  * 
  * @author Roope Kuikka

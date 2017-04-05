@@ -18,7 +18,7 @@ import lejos.robotics.navigation.DifferentialPilot;
 public class Ajoluokka {
 
 	public static void main(String[] args) {
-
+	
 		// Alustukset
 		final DifferentialPilot pilotti;
 		final Ajastin ajastin;
@@ -26,6 +26,7 @@ public class Ajoluokka {
 		final ColorSensor cSensori;
 		final Ajaja ajaja;
 		final Matrix matrix;
+		final YhdistaNXT yhdistaminen;
 
 		// Luodaan oliot
 		pilotti = new DifferentialPilot(2.25f, 5.5f, Motor.A, Motor.B);
@@ -34,13 +35,19 @@ public class Ajoluokka {
 		ajaja = new Ajaja(pilotti);
 		ajastin = new Ajastin();
 		matrix = new Matrix();
+		yhdistaminen = new YhdistaNXT(ajaja);
 
 		// Tehd‰‰n s‰ie Sensorit -luokasta
 		Runnable s = new Sensorit(cSensori, uSensori, ajaja, ajastin);
 		Thread sensori = new Thread(s);
 
 		// Ohjelma k‰ynnistyy
+		
+		// Animaatio
 		matrix.ajaIntro();
+		
+		//Yhdistaminen
+		yhdistaminen.Yhdista();
 		
 		// S‰ie starttaa
 		sensori.start();
