@@ -29,6 +29,7 @@ public class Ajoluokka {
 		final UltrasonicSensor uSensori;
 		final ColorSensor cSensori;
 		final Ajaja ajaja;
+		final Matrix matrix;
 
 		// Luodaan oliot
 		pilotti = new DifferentialPilot(2.25f, 5.5f, Motor.A, Motor.B);
@@ -36,6 +37,7 @@ public class Ajoluokka {
 		cSensori = new ColorSensor(SensorPort.S2);
 		ajaja = new Ajaja(pilotti);
 		ajastin = new Ajastin();
+		matrix = new Matrix();
 
 		// Tehd‰‰n s‰ie Sensorit -luokasta
 		Runnable s = new Sensorit(cSensori, uSensori, ajaja, ajastin);
@@ -47,6 +49,7 @@ public class Ajoluokka {
 		LCD.drawString("aloittaaksesi", 2, 3);
 		Button.ENTER.waitForPressAndRelease();
 		LCD.clear();
+		matrix.ajaIntro();
 		
 		// S‰ie starttaa
 		sensori.start();
