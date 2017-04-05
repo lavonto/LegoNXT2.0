@@ -1,4 +1,7 @@
+import java.io.File;
+
 import lejos.nxt.LCD;
+import lejos.nxt.Sound;
 
 /**
  * Ajastin laskee kuluneen ajan kahden pisteen väliltä ja näyttää tuloksen
@@ -27,7 +30,7 @@ public class Ajastin {
 
 		LCD.drawString("Aloittamiseen", 2, 2);
 		for (int i = 5; i > 0; i--) {
-			
+			Sound.playSample(new File("otus.wav"));
 			LCD.drawString("aikaa " + i + " sek", 3, 3);
 			try {
 				Thread.sleep(1000);

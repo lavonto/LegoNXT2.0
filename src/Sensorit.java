@@ -63,10 +63,10 @@ public class Sensorit implements Runnable {
 		viivaVari = cSensori.getLightValue();
 		
 		// Lasketaan kaartamista varten minimi ja maksimi arvot muuttujiin
-		viivaMin = viivaVari - 2;
-		viivaMax = viivaVari + 2;
-		jyrkkaMin = viivaVari - 15;
-		jyrkkaMax = viivaVari + 15;
+		viivaMin = viivaVari - 4;
+		viivaMax = viivaVari + 4;
+		jyrkkaMin = viivaVari - 10;
+		jyrkkaMax = viivaVari + 10;
 	}
 	
 	/**

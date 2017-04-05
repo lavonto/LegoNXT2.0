@@ -81,11 +81,6 @@ public class Ajaja {
 		Motor.A.setSpeed(nopeus);
 		Motor.A.forward();
 		Motor.B.forward();
-		try {
-			Thread.sleep(50);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
 		LCD.clear();
 	}
 
@@ -101,11 +96,6 @@ public class Ajaja {
 		Motor.A.setSpeed(nopeus / 2);
 		Motor.A.forward();
 		Motor.B.forward();
-		try {
-			Thread.sleep(50);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
 		LCD.clear();
 	}
 
@@ -117,15 +107,10 @@ public class Ajaja {
 	// Robotti kaartaa jyrkästi oikealle
 	public void jyrkastiOikealle() {
 		LCD.drawString("Jyrkka oikea", 1, 2);
-		Motor.B.setSpeed(nopeus / 8);
-		Motor.A.setSpeed(nopeus);
+		Motor.A.setSpeed(nopeus + nopeus/2);
+		Motor.B.setSpeed(nopeus / 3);
 		Motor.A.forward();
 		Motor.B.forward();
-		try {
-			Thread.sleep(50);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
 		LCD.clear();
 	}
 
@@ -137,15 +122,10 @@ public class Ajaja {
 	// Robotti kaartaa jyrkästi vasemmalle
 	public void jyrkastiVasemmalle() {
 		LCD.drawString("Jyrkka vasen", 1, 2);
-		Motor.B.setSpeed(nopeus);
-		Motor.A.setSpeed(nopeus / 8);
+		Motor.B.setSpeed(nopeus + nopeus/2);
+		Motor.A.setSpeed(nopeus / 3);
 		Motor.A.forward();
 		Motor.B.forward();
-		try {
-			Thread.sleep(50);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
 		LCD.clear();
 	}
 
@@ -182,8 +162,8 @@ public class Ajaja {
 		pysahdy();
 		LCD.drawString("Vasen vaisto", 1, 2);
 		pilotti.rotate(45);
-		pilotti.travel(20);
-		pilotti.rotate(-90);
+		pilotti.travel(12);
+		pilotti.rotate(-85);
 		setVaistetty(true);
 		LCD.clear();
 	}
@@ -197,8 +177,8 @@ public class Ajaja {
 		pysahdy();
 		LCD.drawString("Oikea vaisto", 1, 2);
 		pilotti.rotate(-45);
-		pilotti.travel(15);
-		pilotti.rotate(90);
+		pilotti.travel(12);
+		pilotti.rotate(85);
 		setVaistetty(true);
 		LCD.clear();
 	}
