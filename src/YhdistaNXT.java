@@ -34,17 +34,17 @@ public class YhdistaNXT {
 		// Tulostetaan data ruutuun
 		LCD.clear();
 
-		LCD.drawString("Nopeus: ", 3, 3);
-		LCD.drawInt(ajaja.getNopeus(), 8, 3);
+		LCD.drawString("Nopeus: ", 3, 1);
+		LCD.drawInt(ajaja.getNopeus(), 8, 2);
 		
-		LCD.drawString("Ohituspuoli: ", 3, 4);
+		LCD.drawString("Ohituspuoli: ", 3, 3);
 		LCD.drawString(ajaja.getPuoli(), 7, 4);
 		
 		LCD.drawString("Paina ENTER", 3, 6);
-		LCD.drawString("Jatkaaksesi", 3, 6);
+		LCD.drawString("Jatkaaksesi", 3, 7);
 		
 		Button.ENTER.waitForPressAndRelease();
-
+		LCD.clear();
 		// Yhteyden sulkeminen
 		try {
 			luku.close();

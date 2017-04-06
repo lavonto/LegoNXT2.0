@@ -76,12 +76,12 @@ public class Ajaja {
 
 	// Robotti kaartaa loivasti oikealle
 	public void kaarraOikealle() {
-		LCD.drawString("Oikealle", 4, 2);
+		//LCD.drawString("Oikealle", 4, 2);
 		Motor.B.setSpeed(nopeus / 2);
 		Motor.A.setSpeed(nopeus);
 		Motor.A.forward();
 		Motor.B.forward();
-		LCD.clear();
+		//LCD.clear();
 	}
 
 	/**
@@ -91,12 +91,12 @@ public class Ajaja {
 
 	// Robotti kaartaa loivasti vasemmalle
 	public void kaarraVasemmalle() {
-		LCD.drawString("Vasemmalle", 2, 2);
+		//LCD.drawString("Vasemmalle", 2, 2);
 		Motor.B.setSpeed(nopeus);
 		Motor.A.setSpeed(nopeus / 2);
 		Motor.A.forward();
 		Motor.B.forward();
-		LCD.clear();
+		//LCD.clear();
 	}
 
 	/**
@@ -106,12 +106,12 @@ public class Ajaja {
 
 	// Robotti kaartaa jyrkästi oikealle
 	public void jyrkastiOikealle() {
-		LCD.drawString("Jyrkka oikea", 2, 2);
+		//LCD.drawString("Jyrkka oikea", 2, 2);
 		Motor.A.setSpeed(nopeus + nopeus/2);
 		Motor.B.setSpeed(nopeus / 3);
 		Motor.A.forward();
 		Motor.B.forward();
-		LCD.clear();
+		//LCD.clear();
 	}
 
 	/**
@@ -121,12 +121,12 @@ public class Ajaja {
 
 	// Robotti kaartaa jyrkästi vasemmalle
 	public void jyrkastiVasemmalle() {
-		LCD.drawString("Jyrkka vasen", 2, 2);
+		//LCD.drawString("Jyrkka vasen", 2, 2);
 		Motor.B.setSpeed(nopeus + nopeus/2);
 		Motor.A.setSpeed(nopeus / 3);
 		Motor.A.forward();
 		Motor.B.forward();
-		LCD.clear();
+		//LCD.clear();
 	}
 
 	/**
