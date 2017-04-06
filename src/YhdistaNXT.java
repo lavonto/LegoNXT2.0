@@ -25,7 +25,7 @@ public class YhdistaNXT {
 
 		try {
 			ajaja.setNopeus(luku.readInt());
-			ajaja.setPuoli(luku.readInt());
+			ajaja.setPuoli(luku.readUTF());
 
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -38,7 +38,7 @@ public class YhdistaNXT {
 		LCD.drawInt(ajaja.getNopeus(), 8, 3);
 		
 		LCD.drawString("Ohituspuoli: ", 3, 4);
-		LCD.drawInt(ajaja.getPuoli(), 7, 4);
+		LCD.drawString(ajaja.getPuoli(), 7, 4);
 		
 		LCD.drawString("Paina ENTER", 3, 6);
 		LCD.drawString("Jatkaaksesi", 3, 6);

@@ -103,7 +103,6 @@ public class Sensorit implements Runnable {
 
 		// Asetetaan kumman puolen seuraaja
 		// Puoli 1 == vasemman puolen seuraaja ja puoli 2 == oikean puolen
-		ajaja.setPuoli(1);
 		ajaja.setVaistetty(false);
 		ajaja.setAjossa(true);
 		ajastin.liikkeelleLahto();
@@ -122,40 +121,40 @@ public class Sensorit implements Runnable {
 				// Vasemman puolen viivan seuraajan kaartamiset
 				if (cSensori.getLightValue() > viivaMax
 						&& cSensori.getLightValue() <= jyrkkaMax
-						&& ajaja.getPuoli() == 1) {
+						&& ajaja.getPuoli() == "vasen") {
 					ajaja.kaarraOikealle();
 				}
 				if (cSensori.getLightValue() < viivaMin
 						&& cSensori.getLightValue() >= jyrkkaMin
-						&& ajaja.getPuoli() == 1) {
+						&& ajaja.getPuoli() == "vasen") {
 					ajaja.kaarraVasemmalle();
 				}
 				if (cSensori.getLightValue() > jyrkkaMax
-						&& ajaja.getPuoli() == 1) {
+						&& ajaja.getPuoli() == "vasen") {
 					ajaja.jyrkastiOikealle();
 				}
 				if (cSensori.getLightValue() < jyrkkaMin
-						&& ajaja.getPuoli() == 1) {
+						&& ajaja.getPuoli() == "vasen") {
 					ajaja.jyrkastiVasemmalle();
 				}
 
 				// Oikean puolen viivan seuraajan kaartamiset
 				if (cSensori.getLightValue() < viivaMin
 						&& cSensori.getLightValue() >= jyrkkaMin
-						&& ajaja.getPuoli() == 2) {
+						&& ajaja.getPuoli() == "oikea") {
 					ajaja.kaarraOikealle();
 				}
 				if (cSensori.getLightValue() > viivaMax
 						&& cSensori.getLightValue() <= jyrkkaMax
-						&& ajaja.getPuoli() == 2) {
+						&& ajaja.getPuoli() == "oikea") {
 					ajaja.kaarraVasemmalle();
 				}
 				if (cSensori.getLightValue() > jyrkkaMax
-						&& ajaja.getPuoli() == 2) {
+						&& ajaja.getPuoli() == "oikea") {
 					ajaja.jyrkastiVasemmalle();
 				}
 				if (cSensori.getLightValue() < jyrkkaMin
-						&& ajaja.getPuoli() == 2) {
+						&& ajaja.getPuoli() == "oikea") {
 					ajaja.jyrkastiOikealle();
 				}
 
@@ -183,7 +182,7 @@ public class Sensorit implements Runnable {
 
 				// Jos robotti on vasemman puolen seuraaja, väistetään
 				// vasemmalta
-				if (ajaja.getPuoli() == 1) {
+				if (ajaja.getPuoli() == "vasen") {
 					ajaja.vaistoVasemmalle();
 
 					// Väistön jälkeen, siirrytään vaiheeseen 3
@@ -191,7 +190,7 @@ public class Sensorit implements Runnable {
 				}
 
 				// Jos robotti on oikean puolen seuraaja, väistetään oikealta
-				if (ajaja.getPuoli() == 2) {
+				if (ajaja.getPuoli() == "oikea") {
 					ajaja.vaistoOikealle();
 
 					// Väistön jälkeen, siirrytään vaiheeseen 3

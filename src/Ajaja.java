@@ -14,7 +14,7 @@ public class Ajaja {
 
 	// Alustukset
 	private int vaihe;
-	private int puoli;
+	private String puoli;
 	private int nopeus;
 	private boolean vaistetty; 
 	private boolean ajossa;
@@ -37,11 +37,11 @@ public class Ajaja {
 		return vaihe;
 	}
 
-	public void setPuoli(int puoli) {
+	public void setPuoli(String puoli) {
 		this.puoli = puoli;
 	}
 
-	public int getPuoli() {
+	public String getPuoli() {
 		return puoli;
 	}
 
