@@ -1,80 +1,56 @@
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
-
 import lejos.pc.comm.NXTConnector;
-
 import javax.swing.*;
 
+/*
 import java.awt.*;
 import java.awt.event.*;
+*/
 
 public class Yhdista_NXT extends JFrame  {
-	
+	//Alustetaan yhteys
 	private DataInputStream dis;
 	private DataOutputStream dos;
 	private NXTConnector connection;
-	
-	//nopeus/2*360
-	double nopeus = 250;
-	int ohitusPuoli = 1;
-	
-	   
+	//Muuttujat
+	int nopeus = 250;
+	String ohitusPuoli = "vasen";
+   
 	   public Yhdista_NXT() {
 	        initComponents();
 	    }
 	   public void ohitusPuoliArvo(){
 		    if (Checkbox_vasemmalta.isSelected()){
-		        ohitusPuoli = 1;
+		        ohitusPuoli = "vasen";
 		    }else{
-		    ohitusPuoli = 2;
+		    ohitusPuoli = "oikea";
 		    }
 		}
-	   public void Yhdista(){    	    				
-			connection = new NXTConnector();
-			
+	   //Yhteyden luonti metodi
+	   public void Yhdista(){
+			connection = new NXTConnector();		
 			boolean connected = connection.connectTo("usb://");
 			if (!connected) {
 				System.err.println("Yhdist‰minen ep‰onnistui");
 				System.exit(1);
 			}
-
 		      dos = new DataOutputStream(connection.getOutputStream());
-		      dis = new DataInputStream(connection.getInputStream());
-		      
-
+		      dis = new DataInputStream(connection.getInputStream());		      
 	   }
-	   //
-	   //datan l‰hetys, vastaanotto ja sulkeminen
-	   //
+	   //datan l‰hetys ja sulkeminen metodi
 	   public void SuljeJaLaheta(){
-		   
-		   System.out.println("l‰hetet‰‰n");	
-		   /*
-		      for(int i = 0; i < 20; i++){
-		    	  
-		         try {
-		            dos.writeInt(i);
-		            dos.flush();
-		         } 
-		         catch (IOException e) {
-		            e.printStackTrace();
-		         }
-		      }
-	   */	
-		     
-		    	  
+		   System.out.println("l‰hetet‰‰n");		     	    	  
 			         try {
-			            dos.writeDouble(nopeus);
-			            dos.writeInt(ohitusPuoli);
+			            dos.writeInt(nopeus);
+			            dos.writeUTF(ohitusPuoli);
 			            dos.flush();
 			         } 
 			         catch (IOException e) {
 			            e.printStackTrace();
 			         }
-			      
 
-		   System.out.println("Suljetaan");
 		      try {
 		         dis.close();
 		         dos.close();
@@ -87,10 +63,10 @@ public class Yhdista_NXT extends JFrame  {
 		      System.exit(1);		   
 	   }
 	   //
-	   //Generoitu
+	   //Generoitua koodia
 	   //
 	    @SuppressWarnings("unchecked")
-	    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
+	    // <editor-fold defaultstate="collapsed" desc="Generated Code">                         
 	    private void initComponents() {
 
 	        Button_yhdista = new javax.swing.JButton();
@@ -219,54 +195,35 @@ public class Yhdista_NXT extends JFrame  {
 	        pack();
 	    }// </editor-fold>               
 	   //
-	   //Generoitu
+	   //Generoitu koodi loppuu
 	   //
 	    private void Checkbox_vasemmaltaMouseClicked(java.awt.event.MouseEvent evt) {                                                 
 	        Checkbox_oikealta.setSelected(false);
-
 	        ohitusPuoliArvo();
 	    }                                                
-
 	    private void Checkbox_oikealtaMouseClicked(java.awt.event.MouseEvent evt) {                                               
 	        Checkbox_vasemmalta.setSelected(false);
-
-	                ohitusPuoliArvo();
-	                
+	        ohitusPuoliArvo();	                
 	    }                                              
-/*
-	    private void Slider_nopeusStateChanged(javax.swing.event.ChangeEvent evt) {                                           
-	       nopeus = Math.round(Double.parseDouble(Slider_nopeus.getText()));
-	        Label_nopeus.setText(Double.toString(nopeus/2)+" x rengaan pyˆr‰hdyst‰ sekunnissa");
-	    } 
-	    */
-
 	    private void Button_valmisMouseClicked(java.awt.event.MouseEvent evt) {                                           
 	        //L‰hetet‰‰n robottiin       
 	        System.out.print("Nopeus: "+nopeus+"∞/s");
 	        System.out.print("Ohituspuoli: "+ohitusPuoli);
-	        System.out.print("Paina mit‰ tahansa nappia...");
 	        SuljeJaLaheta();
 	    }                                          
-
 	    private void Button_yhdistaMouseClicked(java.awt.event.MouseEvent evt) {                                            
-	        //Yhdistet‰‰n robottiin
 	    	Yhdista();
 	    }                                           
-
 	    private void Slider_nopeusKeyReleased(java.awt.event.KeyEvent evt) {                                          
-		       nopeus = Double.parseDouble(Slider_nopeus.getText());
+		       nopeus = Integer.parseInt(Slider_nopeus.getText());
 		       System.out.println(nopeus);
-	    }      
-	    
+	    }      	    
 	    /**
 	     * @param args the command line arguments
 	     */ 
 	    public static void main(String args[]) {
 	        //Button_yhdista.setEnabled(false);
-	        
-	        
-	        
-	        
+	                
 	        /* Set the Nimbus look and feel */
 	        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
 	        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
