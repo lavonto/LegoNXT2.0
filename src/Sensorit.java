@@ -39,8 +39,7 @@ public class Sensorit implements Runnable {
 	 * @param ajastin
 	 */
 
-	Sensorit(ColorSensor cSensori, UltrasonicSensor uSensori, Ajaja ajaja,
-			Ajastin ajastin) {
+	Sensorit(ColorSensor cSensori, UltrasonicSensor uSensori, Ajaja ajaja, Ajastin ajastin) {
 		this.cSensori = cSensori;
 		this.uSensori = uSensori;
 		this.ajaja = ajaja;
@@ -110,7 +109,6 @@ public class Sensorit implements Runnable {
 		// Tallennetaan valoarvot muuttujaan
 		asetaValoArvot();
 
-		
 		// Asetetaan kumman puolen seuraaja
 		// Puoli 1 == vasemman puolen seuraaja ja puoli 2 == oikean puolen
 		ajaja.setVaistetty(false);
@@ -118,7 +116,7 @@ public class Sensorit implements Runnable {
 		ajastin.liikkeelleLahto();
 		// Asetetaan vaihteenksi 1, jolloin VariSensorin if-lauseet on käytössä
 		ajaja.setVaihe(1);
-		
+
 		// Aloitetaan ajanotto
 		ajastin.aloitusaika();
 
@@ -129,12 +127,10 @@ public class Sensorit implements Runnable {
 
 				// Vasemman puolen viivan seuraajan kaartamiset
 				if (ajaja.getPuoli().equals("vasen")) {
-					if (cSensori.getLightValue() > viivaMax
-							&& cSensori.getLightValue() <= jyrkkaMax) {
+					if (cSensori.getLightValue() > viivaMax && cSensori.getLightValue() <= jyrkkaMax) {
 						ajaja.kaarraOikealle();
 					}
-					if (cSensori.getLightValue() < viivaMin
-							&& cSensori.getLightValue() >= jyrkkaMin) {
+					if (cSensori.getLightValue() < viivaMin && cSensori.getLightValue() >= jyrkkaMin) {
 						ajaja.kaarraVasemmalle();
 					}
 					if (cSensori.getLightValue() > jyrkkaMax) {
@@ -146,12 +142,10 @@ public class Sensorit implements Runnable {
 				}
 				// Oikean puolen viivan seuraajan kaartamiset
 				if (ajaja.getPuoli().equals("oikea")) {
-					if (cSensori.getLightValue() < viivaMin
-							&& cSensori.getLightValue() >= jyrkkaMin) {
+					if (cSensori.getLightValue() < viivaMin && cSensori.getLightValue() >= jyrkkaMin) {
 						ajaja.kaarraOikealle();
 					}
-					if (cSensori.getLightValue() > viivaMax
-							&& cSensori.getLightValue() <= jyrkkaMax) {
+					if (cSensori.getLightValue() > viivaMax && cSensori.getLightValue() <= jyrkkaMax) {
 						ajaja.kaarraVasemmalle();
 					}
 					if (cSensori.getLightValue() > jyrkkaMax) {
@@ -163,8 +157,7 @@ public class Sensorit implements Runnable {
 				}
 				// Jos valoarvo viivaMin ja viivaMax arvojen välissä, robotti
 				// liikkuu suoraan eteenpäin
-				if (cSensori.getLightValue() > viivaMin
-						&& cSensori.getLightValue() < viivaMax) {
+				if (cSensori.getLightValue() > viivaMin && cSensori.getLightValue() < viivaMax) {
 					ajaja.liiku();
 				}
 
@@ -232,5 +225,4 @@ public class Sensorit implements Runnable {
 
 		Button.ENTER.waitForPressAndRelease();
 	}
-
 }

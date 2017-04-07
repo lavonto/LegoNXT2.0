@@ -39,38 +39,39 @@ public class Matrix {
 			"|\\/| _ _|_ _.   ",
 			"                ",
 	};
-	
+
 	/**
-	 *  Tulostaa stringit robotin näytölle drawString -metodilla
+	 * Tulostaa stringit robotin näytölle drawString -metodilla
 	 */
-	
+
 	// Tulostetaan kuvio robotin näytölle
-	public void ajaIntro(){
-		
+	public void ajaIntro() {
 		Sound.playSample(new File("vaisto.wav"));
-		
-		for (int i = 0; i < rivit.length-6; i++) {
+
+		for (int i = 0; i < rivit.length - 6; i++) {
 			LCD.clear();
-			LCD.drawString(rivit[i+6], 0, 1);
-			LCD.drawString(rivit[i+5], 0, 2);
-			LCD.drawString(rivit[i+4], 0, 3);
-			LCD.drawString(rivit[i+3], 0, 4);
-			LCD.drawString(rivit[i+2], 0, 5);
-			LCD.drawString(rivit[i+1], 0, 6);
+			LCD.drawString(rivit[i + 6], 0, 1);
+			LCD.drawString(rivit[i + 5], 0, 2);
+			LCD.drawString(rivit[i + 4], 0, 3);
+			LCD.drawString(rivit[i + 3], 0, 4);
+			LCD.drawString(rivit[i + 2], 0, 5);
+			LCD.drawString(rivit[i + 1], 0, 6);
 			LCD.drawString(rivit[i], 0, 7);
 			odota(200);
 		}
 		Button.ENTER.waitForPressAndRelease();
 		LCD.clear();
 	}
-	
+
 	/**
 	 * Saa robotin odottamaan halutun ajan ennen uusien stringien tulostamista
-	 * @param millisek Metodi saa parametrinä ajan
+	 * 
+	 * @param millisek
+	 *            Metodi saa parametrinä ajan
 	 */
-	
-	// Odotetaan 
-	public void odota(int millisek){
+
+	// Odotetaan
+	public void odota(int millisek) {
 		try {
 			Thread.sleep(millisek);
 		} catch (InterruptedException e) {

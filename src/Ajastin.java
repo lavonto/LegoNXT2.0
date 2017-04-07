@@ -1,5 +1,4 @@
 import java.io.File;
-
 import lejos.nxt.LCD;
 import lejos.nxt.Sound;
 
@@ -20,14 +19,13 @@ public class Ajastin {
 	private long sekunnit;
 	private long kulunutaika;
 
-	/** 
-	 * Lähdetäänliikkeelle viiden sekunnin jälkeen
-	 * Näytetään jäljellä olevat sekunnit näytöllä
+	/**
+	 * Lähdetäänliikkeelle viiden sekunnin jälkeen Näytetään jäljellä olevat
+	 * sekunnit näytöllä
 	 */
-	
+
 	// Suoritetaan viiden sekunnin lähtölaskenta
 	public void liikkeelleLahto() {
-
 		LCD.drawString("Aloittamiseen", 2, 2);
 		for (int i = 5; i > 0; i--) {
 			Sound.playSample(new File("luku.wav"));
@@ -73,14 +71,12 @@ public class Ajastin {
 	// Lasketaan kulunut aika
 	public String kulunutaika() {
 		erotus = lopetus - aloitus;
-		
+
 		// Jaetaan arvo tuhannella.
 		kulunutaika = erotus / 1000;
 		minuutit = (kulunutaika / 60);
 		sekunnit = (kulunutaika) - (minuutit * 60);
-		
-		return minuutit + " min " + sekunnit + " sek";
-		
-	}
 
+		return minuutit + " min " + sekunnit + " sek";
+	}
 }

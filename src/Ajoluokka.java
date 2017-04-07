@@ -4,10 +4,10 @@ import lejos.nxt.SensorPort;
 import lejos.nxt.UltrasonicSensor;
 import lejos.robotics.navigation.DifferentialPilot;
 
-
 /**
- * Ajoluokka -luokassa alustetaan ja luodaan oliot luokille DifferentialPilot, Ajastin, UltrasonicSensor,
- * ColorSensor ja Ajaja. Luokassa luodaan s‰ie Sensorit luokasta ja k‰ynnistet‰‰n se. Ohjelman k‰ynnistyess‰ toistetaan
+ * Ajoluokka -luokassa alustetaan ja luodaan oliot luokille DifferentialPilot,
+ * Ajastin, UltrasonicSensor, ColorSensor ja Ajaja. Luokassa luodaan s‰ie
+ * Sensorit luokasta ja k‰ynnistet‰‰n se. Ohjelman k‰ynnistyess‰ toistetaan
  * ‰‰nitiedosto k‰ytt‰m‰ll‰ Sound -luokan playSample -metodia.
  * 
  * @author Roope Kuikka
@@ -18,7 +18,7 @@ import lejos.robotics.navigation.DifferentialPilot;
 public class Ajoluokka {
 
 	public static void main(String[] args) {
-	
+
 		// Alustukset
 		final DifferentialPilot pilotti;
 		final Ajastin ajastin;
@@ -42,15 +42,15 @@ public class Ajoluokka {
 		Thread sensori = new Thread(s);
 
 		// Ohjelma k‰ynnistyy
-		
+
 		// Animaatio
 		matrix.ajaIntro();
-		
-		//Yhdistaminen
+
+		// Yhdistaminen
 		yhdistaminen.Yhdista();
-		
+
 		// S‰ie starttaa
 		sensori.start();
-		
+
 	}
 }

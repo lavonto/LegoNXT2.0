@@ -1,4 +1,3 @@
-import lejos.nxt.LCD;
 import lejos.nxt.Motor;
 import lejos.robotics.navigation.DifferentialPilot;
 
@@ -16,13 +15,13 @@ public class Ajaja {
 	private int vaihe;
 	private String puoli;
 	private int nopeus;
-	private boolean vaistetty; 
+	private boolean vaistetty;
 	private boolean ajossa;
 	private DifferentialPilot pilotti;
 
 	/**
 	 * @param pilotti
-	 * Ajaja saa Ajoluoka -luokassa luodun pilotti olion.
+	 *            Ajaja saa Ajoluoka -luokassa luodun pilotti olion.
 	 */
 
 	Ajaja(DifferentialPilot pilotti) {
@@ -52,11 +51,11 @@ public class Ajaja {
 	public int getNopeus() {
 		return nopeus;
 	}
-	
+
 	public void setVaistetty(boolean vaistetty) {
 		this.vaistetty = vaistetty;
 	}
-	
+
 	public boolean getVaistetty() {
 		return vaistetty;
 	}
@@ -64,7 +63,7 @@ public class Ajaja {
 	public void setAjossa(boolean ajossa) {
 		this.ajossa = ajossa;
 	}
-	
+
 	public boolean getAjossa() {
 		return ajossa;
 	}
@@ -76,12 +75,10 @@ public class Ajaja {
 
 	// Robotti kaartaa loivasti oikealle
 	public void kaarraOikealle() {
-		//LCD.drawString("Oikealle", 4, 2);
-		Motor.B.setSpeed(nopeus / 2);
 		Motor.A.setSpeed(nopeus);
+		Motor.B.setSpeed(nopeus / 2);
 		Motor.A.forward();
 		Motor.B.forward();
-		//LCD.clear();
 	}
 
 	/**
@@ -91,12 +88,10 @@ public class Ajaja {
 
 	// Robotti kaartaa loivasti vasemmalle
 	public void kaarraVasemmalle() {
-		//LCD.drawString("Vasemmalle", 2, 2);
-		Motor.B.setSpeed(nopeus);
 		Motor.A.setSpeed(nopeus / 2);
+		Motor.B.setSpeed(nopeus);
 		Motor.A.forward();
 		Motor.B.forward();
-		//LCD.clear();
 	}
 
 	/**
@@ -106,12 +101,10 @@ public class Ajaja {
 
 	// Robotti kaartaa jyrk‰sti oikealle
 	public void jyrkastiOikealle() {
-		//LCD.drawString("Jyrkka oikea", 2, 2);
-		Motor.A.setSpeed(nopeus + nopeus/2);
+		Motor.A.setSpeed(nopeus + nopeus / 2);
 		Motor.B.setSpeed(nopeus / 3);
 		Motor.A.forward();
 		Motor.B.forward();
-		//LCD.clear();
 	}
 
 	/**
@@ -121,12 +114,10 @@ public class Ajaja {
 
 	// Robotti kaartaa jyrk‰sti vasemmalle
 	public void jyrkastiVasemmalle() {
-		//LCD.drawString("Jyrkka vasen", 2, 2);
-		Motor.B.setSpeed(nopeus + nopeus/2);
 		Motor.A.setSpeed(nopeus / 3);
+		Motor.B.setSpeed(nopeus + nopeus / 2);
 		Motor.A.forward();
 		Motor.B.forward();
-		//LCD.clear();
 	}
 
 	/**
@@ -145,12 +136,10 @@ public class Ajaja {
 
 	// Robotti liikkuu suoraan eteenp‰in
 	public void liiku() {
-		LCD.drawString("Suoraan", 4, 2);
 		Motor.A.setSpeed(nopeus);
 		Motor.B.setSpeed(nopeus);
 		Motor.A.forward();
 		Motor.B.forward();
-		LCD.clear();
 	}
 
 	/**
@@ -160,12 +149,10 @@ public class Ajaja {
 	// Robotti v‰ist‰‰ estett‰ vasemmalta
 	public void vaistoVasemmalle() {
 		pysahdy();
-		LCD.drawString("Vasen vaisto", 2, 2);
 		pilotti.rotate(45);
 		pilotti.travel(12);
 		pilotti.rotate(-85);
 		setVaistetty(true);
-		LCD.clear();
 	}
 
 	/**
@@ -175,12 +162,9 @@ public class Ajaja {
 	// Robotti v‰ist‰‰ estett‰ oikealta
 	public void vaistoOikealle() {
 		pysahdy();
-		LCD.drawString("Oikea vaisto", 3, 2);
 		pilotti.rotate(-45);
 		pilotti.travel(12);
 		pilotti.rotate(85);
 		setVaistetty(true);
-		LCD.clear();
 	}
-
 }
