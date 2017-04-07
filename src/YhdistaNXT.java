@@ -5,6 +5,14 @@ import lejos.nxt.LCD;
 import lejos.nxt.comm.USB;
 import lejos.nxt.comm.*;
 
+/**
+ * Ottaa tietokoneelta tulevat muuttujat vastaan.
+ * 
+ * @author Tuomas Harju
+ * @version 1.0
+ * @since 5.4.2017
+ */
+ 
 public class YhdistaNXT {
 
 	private Ajaja ajaja;
@@ -12,7 +20,10 @@ public class YhdistaNXT {
 	YhdistaNXT(Ajaja ajaja) {
 		this.ajaja = ajaja;
 	}
-
+	 /**
+	  * Avaa tietovirran ja lukee tietokoneen tietovirtaan laittamat muuttujien arvot. 
+	  * Saadut arvot tulostetaan ruutuun ja Lopuksi yhteys suljetaan.
+	  */
 	public void Yhdista() {
 
 		LCD.clear();
@@ -20,9 +31,8 @@ public class YhdistaNXT {
 		USBConnection yhteys = USB.waitForConnection();
 		LCD.clear();
 		LCD.drawString("Yhdistetty!", 3, 4);
-
 		DataInputStream luku = yhteys.openDataInputStream();
-
+		//Datan lukeminen
 		try {
 			ajaja.setNopeus(luku.readInt());
 			ajaja.setPuoli(luku.readUTF());
