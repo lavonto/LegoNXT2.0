@@ -44,6 +44,7 @@ public class Yhdista_NXT extends JFrame {
    *Luo yhteyden ja avaa tietovirran
    */
  public void Yhdista() {
+	 connection = new NXTConnector();
    boolean connected = connection.connectTo("usb://");
    if (!connected) {
     JOptionPane.showMessageDialog(null, "Yhdistäminen epäonnistui");
